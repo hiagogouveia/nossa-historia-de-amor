@@ -25,9 +25,24 @@
             --color-computer-fill: #FFD700; /* Computer gold */
         }
 
-        /* Define a fonte Inter para todo o corpo da página */
+        /*
+           INSTRUÇÕES PARA FONTE PERSONALIZADA:
+           1. Descompacte seu arquivo .zip de fonte.
+           2. Mova os arquivos .woff ou .woff2 (preferencialmente) para a pasta 'assets/fontes/' no seu GitHub.
+           3. Substitua 'NomeDaSuaFonte' pelo nome real da fonte que você quer usar.
+           4. Altere os caminhos 'assets/fontes/sua-fonte-regular.woff2' para os nomes exatos dos seus arquivos.
+        */
+        @font-face {
+            font-family: 'NomeDaSuaFonte'; /* Substitua pelo nome da sua fonte */
+            src: url('assets/fontes/sua-fonte-regular.woff2') format('woff2'), /* Substitua pelo caminho correto do seu arquivo .woff2 */
+                 url('assets/fontes/sua-fonte-regular.woff') format('woff');  /* Substitua pelo caminho correto do seu arquivo .woff */
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Define a fonte Inter (ou sua fonte personalizada) para todo o corpo da página */
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'NomeDaSuaFonte', 'Inter', sans-serif; /* Prioriza sua fonte, com Inter como fallback */
             background-color: var(--color-background-dark);
             color: var(--color-text-light);
             display: flex;
@@ -35,6 +50,13 @@
             align-items: flex-start; /* Alinha o conteúdo ao topo */
             min-height: 100vh;
             padding: 2rem 1rem; /* Adiciona padding para telas pequenas */
+            
+            /* Fundo com imagem medieval e overlay escuro */
+            background-image: url('assets/imagens/anna-gru-omL9Q8B2YCI-unsplash.jpg'); /* Caminho para sua imagem de fundo */
+            background-size: cover; /* Cobre todo o espaço */
+            background-attachment: fixed; /* Fica fixo ao rolar */
+            background-position: center; /* Centraliza a imagem */
+            background-blend-mode: multiply; /* Mistura a cor de fundo com a imagem */
         }
         /* Estilo para o container principal */
         .container {
@@ -153,7 +175,8 @@
         /* Estilos para os botões de controle do jogo em telas menores */
         .game-controls {
             display: flex;
-            justify-content: center;
+            flex-wrap: wrap; /* Permite que os botões quebrem a linha */
+            justify-content: space-around; /* Distribui o espaço entre os botões */
             gap: 1rem;
             margin-top: 1rem;
         }
@@ -161,7 +184,7 @@
             background-color: var(--color-highlight-red); /* Vermelho para os botões */
             color: white;
             font-weight: bold;
-            padding: 0.75rem 1.5rem;
+            padding: 0.85rem 1.75rem; /* Aumenta o padding para botões maiores */
             border-radius: 9999px; /* rounded-full */
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             transition: all 0.3s ease;
@@ -181,13 +204,38 @@
         /* Exibe os botões de controle em telas menores que md */
         @media (max-width: 767px) { /* md */
             .game-control-button-mobile {
-                display: block; /* Garante que sejam exibidos */
+                display: flex; /* Garante que sejam exibidos e flex */
+                flex-direction: row; /* Começa como linha */
+                width: 100%; /* Ocupa a largura total para distribuição */
+            }
+            .game-control-button {
+                flex-grow: 1; /* Faz os botões crescerem para preencher o espaço */
+                min-width: unset; /* Remove min-width se estiver restringindo */
+            }
+        }
+        /* Ajuste para telas ainda menores, se necessário */
+        @media (max-width: 480px) {
+            .game-control-button-mobile {
+                flex-direction: column; /* Em telas muito pequenas, empilha os botões */
+                align-items: center;
+            }
+            .game-control-button {
+                width: 80%; /* Ajusta largura para column */
             }
         }
     </style>
 </head>
 <body class="selection:bg-red-800 selection:text-white">
     <div class="container">
+        <!-- Navegação do Reino -->
+        <nav class="bg-gray-700 p-4 rounded-xl mb-8 shadow-lg border border-gray-600">
+            <ul class="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-8">
+                <li><a href="#contador-real" class="text-white hover:text-red-400 font-semibold text-lg transition-colors duration-200">Contador Real</a></li>
+                <li><a href="#saga-do-reino" class="text-white hover:text-red-400 font-semibold text-lg transition-colors duration-200">A Saga do Reino</a></li>
+                <li><a href="#jornada-heroi" class="text-white hover:text-red-400 font-semibold text-lg transition-colors duration-200">Jornada do Herói</a></li>
+            </ul>
+        </nav>
+
         <!-- Título principal -->
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-red-400 mb-8 leading-tight">
             Nosso Reino de Amor
@@ -199,9 +247,9 @@
         </p>
 
         <!-- Seção do Contador de Tempo -->
-        <div class="bg-gradient-to-r from-gray-900 to-black p-6 rounded-2xl mb-12 shadow-lg">
+        <div id="contador-real" class="bg-gradient-to-r from-gray-900 to-black p-6 rounded-2xl mb-12 shadow-lg border border-gray-700">
             <h2 class="text-3xl font-semibold text-white text-center mb-6">
-                Juntos há:
+                Desde o Alvorecer do Nosso Reino:
             </h2>
             <div id="countdown" class="countdown-grid grid grid-cols-1 md:grid-cols-5 gap-4 justify-items-center">
                 <div class="countdown-item">
@@ -228,10 +276,10 @@
         </div>
 
         <!-- Seção da Nossa História -->
-        <section class="story-section text-gray-300 leading-relaxed space-y-8">
+        <section id="saga-do-reino" class="story-section text-gray-300 leading-relaxed space-y-8">
             <h2 class="text-3xl font-bold text-red-400 mb-6 text-center">A Saga do Nosso Reino</h2>
             
-            <article class="bg-gray-800 p-6 rounded-xl shadow-sm">
+            <article class="bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-700">
                 <h3 class="text-2xl font-semibold text-red-400 mb-3">O Alvorecer do Reino: O Encontro na Cidadela Digix</h3>
                 <p class="mb-4">Nossa história começou a se entrelaçar na Cidadela <strong class="text-red-400">Digix</strong>, em 2015. O ambiente de trabalho se tornou o palco para os primeiros olhares e as primeiras conversas, que aos poucos transformariam colegas em algo muito mais profundo. Era o prelúdio de uma conexão que só cresceria.</p>
                 <p>Foi em <strong class="text-red-400">2016</strong> que demos o primeiro grande passo e oficializamos nosso romance, marcando o início da nossa jornada como casal real.</p>
@@ -249,7 +297,7 @@
                 </div>
             </article>
 
-            <article class="bg-gray-800 p-6 rounded-xl shadow-sm">
+            <article class="bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-700">
                 <h3 class="text-2xl font-semibold text-red-400 mb-3">O Grande Juramento: Um "Sim" Para a Eternidade</h3>
                 <p class="mb-4">O tempo voou, e o amor só se aprofundou. No dia <strong class="text-red-400">15 de dezembro de 2017</strong>, em um momento que ficará para sempre gravado em nossa memória, fiz a pergunta mais importante da minha vida. Aquele "sim" selou a promessa de um futuro juntos, de construir um reino e compartilhar cada novo capítulo.</p>
                 <!-- Novas Imagens para o pedido de casamento -->
@@ -266,7 +314,7 @@
                 </div>
             </article>
 
-            <article class="bg-gray-800 p-6 rounded-xl shadow-sm">
+            <article class="bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-700">
                 <h3 class="text-2xl font-semibold text-red-400 mb-3">O Grande Dia do Casamento Real: Um Novo Capítulo</h3>
                 <p class="mb-4">E então, o dia tão esperado chegou! Em <strong class="text-red-400">26 de janeiro de 2019</strong>, celebramos nossa união em um majestoso casamento real. Foi um dia mágico, repleto de alegria, emoção e a certeza de que estávamos começando o melhor capítulo de nossas vidas. Desde então, cada dia é uma nova página escrita a dois, com amor, parceria e muita cumplicidade.</p>
                 <!-- Novas Imagens para o casamento -->
@@ -284,7 +332,7 @@
             </article>
             
             <!-- Nova Seção: A Chegada da Antonela -->
-            <article class="bg-gray-800 p-6 rounded-xl shadow-sm">
+            <article class="bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-700">
                 <h3 class="text-2xl font-semibold text-red-400 mb-3">O Legado Real: A Chegada da Princesa Antonela</h3>
                 <p class="mb-4">No dia <strong class="text-red-400">05 de setembro de 2024</strong>, nosso reino foi abençoado com a chegada da nossa filha, a magnífica Princesa Antonela! Os primeiros 3 meses foram desafiadores, mas superamos cada obstáculo juntos, fortalecendo ainda mais nosso amor e parceria real.</p>
                 <p class="mb-4">Somos completamente apaixonados por essa menininha linda, risonha e esperta, que trouxe uma alegria indescritível para nossas vidas.</p>
@@ -317,7 +365,7 @@
         </section>
 
         <!-- Nova Seção de Jogo -->
-        <section class="game-section bg-gray-800 p-6 rounded-xl shadow-sm mt-8">
+        <section id="jornada-heroi" class="game-section bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-700 mt-8">
             <h3 class="text-2xl font-semibold text-red-400 mb-3 text-center">A Jornada do Herói Hiago: Em Busca de Seu Reino Encantado!</h3>
             <p class="mb-4 text-center text-gray-300">
                 O jovem e destemido Herói Hiago, das terras pitorescas de Corumbá, partiu em 2012 em busca de um futuro grandioso na Capital, Campo Grande, com o sonho de dominar as artes da informática. Mal sabia ele que seu maior destino se revelaria em algo muito mais sublime: conhecer a Princesa Isabela! Juntos, eles teceram os laços do amor, noivaram e se uniram em sagrado matrimônio, e assim, ela ascendeu ao trono como a Rainha Isabela, a mais bela de todas. Em seu reino encantado, a maior riqueza finalmente chegou: a magnífica, a bondosa e risonha Princesa Antonela, filha da Rainha Isabela! Ajude o Herói Hiago a coletar os pergaminhos do conhecimento (computadores) e guiar sua Rainha e sua Princesa até a segurança de seu castelo!
@@ -500,6 +548,10 @@
         let backgroundElements = [];
         let canvasBackgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-game-background-corumba'); // Default for phase 1 (Corumbá)
 
+        // New: Crown image for the player in Phase 3
+        const crownImage = new Image();
+        crownImage.src = 'assets/imagens/crown.png'; // Caminho para a imagem da coroa
+
         // Class for the Player
         class Player {
             constructor(x, y) {
@@ -516,11 +568,9 @@
                 ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-player-fill'); // Player character color
                 ctx.fillRect(this.x - cameraX, this.y, this.width, this.height); // Draw relative to camera
 
-                // Draw crown in Phase 3
-                if (currentPhase === 'phase3') {
-                    ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-highlight-gold'); // Gold for crown
-                    ctx.font = '20px Arial'; // Larger for visibility
-                    ctx.fillText('👑', this.x - cameraX + this.width / 4, this.y - 10); // Position crown slightly above player
+                // Draw crown image in Phase 3
+                if (currentPhase === 'phase3' && crownImage.complete) {
+                    ctx.drawImage(crownImage, this.x - cameraX + this.width / 4, this.y - 25, this.width / 2, this.height / 2); // Ajuste a posição e o tamanho da coroa
                 }
             }
 
@@ -616,7 +666,7 @@
                 ctx.fillRect(this.x - cameraX, this.y, this.width, this.height);
                 ctx.fillStyle = 'black';
                 ctx.font = '12px Arial';
-                ctx.fillText('👶', this.x - cameraX + 5, this.y + 15); // Baby emoji
+                ctx.fillText('�', this.x - cameraX + 5, this.y + 15); // Baby emoji
             }
         }
 
@@ -729,12 +779,12 @@
                 new Platform(800, GAME_HEIGHT - PLATFORM_HEIGHT, 100) // Final platform
             ];
             computers = [ // Computers for Phase 3 - made easier
-                new Computer(120, GAME_HEIGHT - 50),
-                new Computer(250, GAME_HEIGHT - 130), 
-                new Computer(400, GAME_HEIGHT - 190), 
-                new Computer(550, GAME_HEIGHT - 110), 
-                new Computer(700, GAME_HEIGHT - 170), 
-                new Computer(WORLD_WIDTH_PHASE3 - 100, GAME_HEIGHT - PLAYER_HEIGHT - COMPUTER_SIZE - 5) // Positioned to be easier near Antonela
+                new Computer(120, GAME_HEIGHT - 50), // On initial ground, very easy
+                new Computer(250, GAME_HEIGHT - 130), // On first platform, accessible
+                new Computer(400, GAME_HEIGHT - 190), // On second platform
+                new Computer(550, GAME_HEIGHT - 110), // On third platform, accessible
+                new Computer(700, GAME_HEIGHT - 170), // On fourth platform
+                new Computer(WORLD_WIDTH_PHASE3 - 100, GAME_HEIGHT - PLAYER_HEIGHT - COMPUTER_SIZE - 5) // Very near Antonela
             ]; 
             princess = new Princess(WORLD_WIDTH_PHASE3 - 150, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT - 50); // Princess stays nearby
             antonela = new Antonela(WORLD_WIDTH_PHASE3 - 80, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT - 50); // Antonela at the end
@@ -825,8 +875,8 @@
                     new Platform(800, GAME_HEIGHT - PLATFORM_HEIGHT, 100) // Final platform
                 ];
                 computers = [ // Computers for Phase 3
-                    new Computer(120, GAME_HEIGHT - 50),
-                    new Computer(250, GAME_HEIGHT - 130), 
+                    new Computer(120, GAME_HEIGHT - 50), // On initial ground, very easy
+                    new Computer(250, GAME_HEIGHT - 130), // On first platform, accessible
                     new Computer(400, GAME_HEIGHT - 190), 
                     new Computer(550, GAME_HEIGHT - 110), 
                     new Computer(700, GAME_HEIGHT - 170), 
@@ -1143,3 +1193,4 @@
     </script>
 </body>
 </html>
+�

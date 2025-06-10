@@ -37,6 +37,11 @@
             text-align: center;
             flex: 1; /* Faz os itens ocuparem o espaço disponível */
             min-width: 100px; /* Largura mínima para evitar quebras em telas muito pequenas */
+            transition: all 0.3s ease-in-out; /* Adiciona transição para efeitos hover */
+        }
+        .countdown-item:hover {
+            transform: scale(1.05); /* Leve zoom no hover */
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.15), 0 6px 10px -3px rgba(0, 0, 0, 0.08); /* Sombra maior no hover */
         }
         .countdown-value {
             font-size: 2.5rem; /* Tamanho da fonte grande para o valor */
@@ -48,6 +53,15 @@
             font-size: 0.9rem; /* Tamanho da fonte para o rótulo */
             color: #0d47a1; /* Azul escuro para o rótulo */
             margin-top: 0.5rem;
+        }
+
+        /* Estilos para os artigos da história com transição */
+        .story-section article {
+            transition: all 0.3s ease-in-out; /* Adiciona transição para efeitos hover */
+        }
+        .story-section article:hover {
+            transform: translateY(-5px); /* Leve levantamento no hover */
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.15), 0 6px 10px -3px rgba(0, 0, 0, 0.08); /* Sombra maior no hover */
         }
 
         /* Responsividade para o grid de contagem */

@@ -64,21 +64,62 @@
             box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.15), 0 6px 10px -3px rgba(0, 0, 0, 0.08); /* Sombra maior no hover */
         }
 
-        /* Responsividade para o grid de contagem */
-        @media (min-width: 640px) { /* sm */
-            .countdown-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 colunas em telas pequenas */
-            }
+        /* Estilos específicos para o carrossel */
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.75rem; /* rounded-lg */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            margin-top: 1.5rem; /* mt-6 */
         }
-        @media (min-width: 768px) { /* md */
-            .countdown-grid {
-                grid-template-columns: repeat(3, 1fr); /* 3 colunas em telas médias */
-            }
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
         }
-        @media (min-width: 1024px) { /* lg */
-            .countdown-grid {
-                grid-template-columns: repeat(5, 1fr); /* 5 colunas em telas grandes */
-            }
+        .carousel-slides img {
+            min-width: 100%; /* Garante que a imagem ocupe a largura total do container */
+            height: 20rem; /* h-80 */
+            object-fit: cover;
+            border-radius: 0.75rem; /* rounded-lg */
+        }
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 9999px; /* fully rounded */
+            transition: background-color 0.3s ease;
+        }
+        .carousel-button:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .carousel-button-prev {
+            left: 1rem;
+        }
+        .carousel-button-next {
+            right: 1rem;
+        }
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+            gap: 0.5rem;
+        }
+        .carousel-dot {
+            width: 0.75rem;
+            height: 0.75rem;
+            background-color: #a7d9f7; /* Light blue */
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .carousel-dot.active {
+            background-color: #1976d2; /* Vibrant blue */
         }
     </style>
 </head>
@@ -131,36 +172,51 @@
                 <h3 class="text-2xl font-semibold text-blue-600 mb-3">O Início: Digix e o Primeiro Olhar</h3>
                 <p class="mb-4">Nossa história começou a se entrelaçar na empresa <strong class="text-blue-700">Digix</strong>, em 2015. O ambiente de trabalho se tornou o palco para os primeiros olhares e as primeiras conversas, que aos poucos transformariam colegas em algo muito mais profundo. Era o prelúdio de uma conexão que só cresceria.</p>
                 <p>Foi em <strong class="text-blue-700">2016</strong> que demos o primeiro grande passo e oficializamos nosso namoro. Ali, a amizade e a admiração mútua floresceram em um compromisso, marcando o início da nossa jornada como casal.</p>
-                <!-- Imagens para o início da história -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-                    <img src="imagens/13087629_10206175099844137_9062140251468120835_n.jpg" alt="Hiago e Isabela, início do relacionamento" class="w-full h-80 object-cover rounded-lg shadow-md">
-                    <img src="imagens/received_769602093168055.jpg" alt="Hiago e Isabela, início do relacionamento" class="w-full h-80 object-cover rounded-lg shadow-md">
-                    <img src="imagens/IMG_20151119_124235064.jpg" alt="Hiago e Isabela, início do relacionamento" class="w-full h-80 object-cover rounded-lg shadow-md">
-                    <img src="imagens/IMG_20151004_173316094.jpg" alt="Hiago e Isabela, início do relacionamento" class="w-full h-80 object-cover rounded-lg shadow-md">
+                <!-- Carrossel para o início da história -->
+                <div id="carousel-inicio" class="carousel-container">
+                    <div class="carousel-slides">
+                        <img src="imagens/13087629_10206175099844137_9062140251468120835_n.jpg" alt="Hiago e Isabela, início do relacionamento">
+                        <img src="imagens/received_769602093168055.jpg" alt="Hiago e Isabela, início do relacionamento">
+                        <img src="imagens/IMG_20151119_124235064.jpg" alt="Hiago e Isabela, início do relacionamento">
+                        <img src="imagens/IMG_20151004_173316094.jpg" alt="Hiago e Isabela, início do relacionamento">
+                    </div>
+                    <button class="carousel-button carousel-button-prev" onclick="changeSlide('carousel-inicio', -1)">&#10094;</button>
+                    <button class="carousel-button carousel-button-next" onclick="changeSlide('carousel-inicio', 1)">&#10095;</button>
+                    <div class="carousel-dots" id="dots-inicio"></div>
                 </div>
             </article>
 
             <article class="bg-blue-50 p-6 rounded-xl shadow-sm">
                 <h3 class="text-2xl font-semibold text-blue-600 mb-3">O Grande Pedido: Um "Sim" para Sempre</h3>
                 <p class="mb-4">O tempo voou, e o amor só se aprofundou. No dia <strong class="text-blue-700">15 de dezembro de 2017</strong>, em um momento que ficará para sempre gravado em nossa memória, fiz a pergunta mais importante da minha vida. Aquele "sim" selou a promessa de um futuro juntos, de construir uma família e compartilhar cada novo capítulo.</p>
-                <!-- Novas Imagens para o pedido de casamento -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-                    <img src="imagens/IMG_1412.jpg" alt="Hiago e Isabela, momento do pedido" class="w-full h-80 object-cover rounded-lg shadow-md">
-                    <img src="imagens/IMG_1415.jpg" alt="Hiago e Isabela, momento do pedido" class="w-full h-80 object-cover rounded-lg shadow-md">
-                    <img src="imagens/IMG_1353.jpg" alt="Hiago e Isabela, antes do pedido" class="w-full h-80 object-cover rounded-lg shadow-md">
-                    <img src="imagens/IMG_1434.jpg" alt="Hiago e Isabela, após o pedido" class="w-full h-80 object-cover rounded-lg shadow-md">
+                <!-- Carrossel para o pedido de casamento -->
+                <div id="carousel-pedido" class="carousel-container">
+                    <div class="carousel-slides">
+                        <img src="imagens/IMG_1412.jpg" alt="Hiago e Isabela, momento do pedido">
+                        <img src="imagens/IMG_1415.jpg" alt="Hiago e Isabela, momento do pedido">
+                        <img src="imagens/IMG_1353.jpg" alt="Hiago e Isabela, antes do pedido">
+                        <img src="imagens/IMG_1434.jpg" alt="Hiago e Isabela, após o pedido">
+                    </div>
+                    <button class="carousel-button carousel-button-prev" onclick="changeSlide('carousel-pedido', -1)">&#10094;</button>
+                    <button class="carousel-button carousel-button-next" onclick="changeSlide('carousel-pedido', 1)">&#10095;</button>
+                    <div class="carousel-dots" id="dots-pedido"></div>
                 </div>
             </article>
 
             <article class="bg-blue-50 p-6 rounded-xl shadow-sm">
                 <h3 class="text-2xl font-semibold text-blue-600 mb-3">O Grande Dia: Um Novo Capítulo</h3>
                 <p class="mb-4">E então, o dia tão esperado chegou! Em <strong class="text-blue-700">26 de janeiro de 2019</strong>, celebramos nossa união em casamento. Foi um dia mágico, repleto de alegria, emoção e a certeza de que estávamos começando o melhor capítulo de nossas vidas. Desde então, cada dia é uma nova página escrita a dois, com amor, parceria e muita cumplicidade.</p>
-                <!-- Novas Imagens para o casamento -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-                    <img src="imagens/WhatsApp Image 2018-11-01 at 18.03.18 (10).jpg" alt="Hiago e Isabela, foto do casamento" class="w-full h-80 object-cover rounded-lg shadow-md">
-                    <img src="imagens/IMG-20190125-WA0038.jpg" alt="Hiago e Isabela, foto do casamento" class="w-full h-80 object-cover rounded-lg shadow-md">
-                    <img src="imagens/IMG_8818.jpg" alt="Hiago e Isabela, foto do casamento" class="w-full h-80 object-cover rounded-lg shadow-md">
-                    <img src="imagens/IMG-20190125-WA0085.jpg" alt="Hiago e Isabela, foto do casamento" class="w-full h-80 object-cover rounded-lg shadow-md">
+                <!-- Carrossel para o casamento -->
+                <div id="carousel-casamento" class="carousel-container">
+                    <div class="carousel-slides">
+                        <img src="imagens/WhatsApp Image 2018-11-01 at 18.03.18 (10).jpg" alt="Hiago e Isabela, foto do casamento">
+                        <img src="imagens/IMG-20190125-WA0038.jpg" alt="Hiago e Isabela, foto do casamento">
+                        <img src="imagens/IMG_8818.jpg" alt="Hiago e Isabela, foto do casamento">
+                        <img src="imagens/IMG-20190125-WA0085.jpg" alt="Hiago e Isabela, foto do casamento">
+                    </div>
+                    <button class="carousel-button carousel-button-prev" onclick="changeSlide('carousel-casamento', -1)">&#10094;</button>
+                    <button class="carousel-button carousel-button-next" onclick="changeSlide('carousel-casamento', 1)">&#10095;</button>
+                    <div class="carousel-dots" id="dots-casamento"></div>
                 </div>
             </article>
             
@@ -229,6 +285,87 @@
 
         // Chama a função uma vez ao carregar a página para evitar o atraso inicial
         updateCountdown();
+
+
+        // Lógica do Carrossel de Imagens
+        const carousels = {}; // Objeto para armazenar o estado de cada carrossel
+
+        function initCarousel(carouselId) {
+            const carouselContainer = document.getElementById(carouselId);
+            const slidesContainer = carouselContainer.querySelector('.carousel-slides');
+            const slides = slidesContainer.querySelectorAll('img');
+            const dotsContainer = document.getElementById(`dots-${carouselId.split('-')[1]}`); // Ex: dots-inicio, dots-pedido, dots-casamento
+            let currentIndex = 0;
+
+            carousels[carouselId] = {
+                slidesContainer: slidesContainer,
+                slides: slides,
+                dotsContainer: dotsContainer,
+                currentIndex: currentIndex,
+                autoSlideInterval: null // Para armazenar o ID do intervalo de transição automática
+            };
+
+            // Cria os pontos de navegação
+            slides.forEach((_, index) => {
+                const dot = document.createElement('span');
+                dot.classList.add('carousel-dot');
+                if (index === 0) dot.classList.add('active');
+                dot.onclick = () => showSlide(carouselId, index);
+                dotsContainer.appendChild(dot);
+            });
+
+            showSlide(carouselId, currentIndex);
+
+            // Inicia a transição automática
+            carousels[carouselId].autoSlideInterval = setInterval(() => {
+                changeSlide(carouselId, 1); // Avança para o próximo slide
+            }, 3000); // A cada 3 segundos
+        }
+
+        function showSlide(carouselId, index) {
+            const carousel = carousels[carouselId];
+            if (!carousel) return;
+
+            // Ajusta o índice para garantir loop infinito
+            if (index >= carousel.slides.length) {
+                carousel.currentIndex = 0;
+            } else if (index < 0) {
+                carousel.currentIndex = carousel.slides.length - 1;
+            } else {
+                carousel.currentIndex = index;
+            }
+
+            // Move o slidesContainer para mostrar o slide correto
+            carousel.slidesContainer.style.transform = `translateX(${-carousel.currentIndex * 100}%)`;
+
+            // Atualiza os pontos de navegação
+            const dots = carousel.dotsContainer.querySelectorAll('.carousel-dot');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === carousel.currentIndex);
+            });
+        }
+
+        function changeSlide(carouselId, direction) {
+            const carousel = carousels[carouselId];
+            if (carousel) {
+                // Ao mudar o slide manualmente, reseta o intervalo para evitar transições imediatas
+                clearInterval(carousel.autoSlideInterval);
+                showSlide(carouselId, carousel.currentIndex + direction);
+                // Reinicia o intervalo após um pequeno atraso
+                carousel.autoSlideInterval = setInterval(() => {
+                    changeSlide(carouselId, 1);
+                }, 3000);
+            }
+        }
+
+        // Inicializa cada carrossel quando a página é carregada
+        window.onload = function() {
+            updateCountdown(); // Garante que o contador inicie imediatamente
+            initCarousel('carousel-inicio');
+            initCarousel('carousel-pedido');
+            initCarousel('carousel-casamento');
+        };
+
     </script>
 </body>
 </html>

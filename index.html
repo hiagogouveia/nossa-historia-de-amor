@@ -3,16 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nossa História de Amor - Hiago & Isabela</title>
+    <title>Nosso Reino de Amor - Hiago & Isabela</title>
     <!-- Carrega o Tailwind CSS para estilos -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Variáveis CSS para a paleta de cores medieval-moderna */
+        :root {
+            --color-background-dark: #2c2f33; /* Dark Slate Gray-like */
+            --color-container-dark: #36393f; /* Darker Gray for main content */
+            --color-highlight-gold: #DAA520; /* Goldenrod for highlights */
+            --color-highlight-red: #B22222; /* Firebrick, deep red */
+            --color-text-light: #E0E0E0; /* Off-white for main text */
+            --color-platform-stone: #6B6B6B; /* Darker grey for platforms */
+            --color-game-background-corumba: #2A2A2A; /* Very dark grey for game background Corumbá */
+            --color-game-background-campogrande: #4A6572; /* Desaturated blue-gray for Campo Grande */
+            --color-game-background-bosque: #2F4F4F; /* Dark Slate Gray for enchanted forest */
+            --color-player-fill: #f87171; /* Player character red */
+            --color-princess-fill: #FF69B4; /* Princess pink */
+            --color-antonela-fill: #9ACD32; /* Antonela light green */
+            --color-computer-fill: #FFD700; /* Computer gold */
+        }
+
         /* Define a fonte Inter para todo o corpo da página */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #1a202c; /* Cinza escuro/quase preto para o fundo */
-            color: #cbd5e0; /* Texto claro para contraste */
+            background-color: var(--color-background-dark);
+            color: var(--color-text-light);
             display: flex;
             justify-content: center;
             align-items: flex-start; /* Alinha o conteúdo ao topo */
@@ -21,47 +38,51 @@
         }
         /* Estilo para o container principal */
         .container {
-            background-color: #2d3748; /* Cinza escuro para o conteúdo principal */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15); /* Sombra mais intensa */
+            background-color: var(--color-container-dark);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.25); /* Sombra mais intensa para robustez */
             max-width: 900px; /* Largura máxima do conteúdo */
             width: 100%;
             border-radius: 1.5rem; /* Bordas arredondadas */
             overflow: hidden;
             padding: 2.5rem; /* Padding interno */
+            border: 2px solid var(--color-highlight-gold); /* Borda dourada para o tema real */
         }
         /* Estilos para os blocos de contagem */
         .countdown-item {
-            background-color: #4a5568; /* Cinza um pouco mais claro para os itens */
+            background-color: #5b6067; /* Muted Gray for items */
             border-radius: 1rem; /* Bordas arredondadas */
             padding: 1.5rem 1rem;
             text-align: center;
             flex: 1; /* Faz os itens ocuparem o espaço disponível */
             min-width: 100px; /* Largura mínima para evitar quebras em telas muito pequenas */
             transition: all 0.3s ease-in-out; /* Adiciona transição para efeitos hover */
+            border: 1px solid #718096; /* Borda sutil */
         }
         .countdown-item:hover {
             transform: scale(1.05); /* Leve zoom no hover */
-            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.25), 0 6px 10px -3px rgba(0, 0, 0, 0.12); /* Sombra maior no hover */
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.35), 0 6px 10px -3px rgba(0, 0, 0, 0.18); /* Sombra maior no hover */
         }
         .countdown-value {
             font-size: 2.5rem; /* Tamanho da fonte grande para o valor */
             font-weight: 700; /* Negrito */
-            color: #f87171; /* Vermelho claro vibrante */
+            color: var(--color-highlight-red); /* Red for vibrancy */
             line-height: 1; /* Altura da linha para melhor espaçamento */
         }
         .countdown-label {
             font-size: 0.9rem; /* Tamanho da fonte para o rótulo */
-            color: #a0aec0; /* Cinza claro para o rótulo */
+            color: var(--color-text-light);
             margin-top: 0.5rem;
         }
 
         /* Estilos para os artigos da história com transição */
         .story-section article {
+            background-color: #4a4d55; /* Slightly lighter than container for contrast */
+            border: 1px solid #6b6e76; /* Subtle border */
             transition: all 0.3s ease-in-out; /* Adiciona transição para efeitos hover */
         }
         .story-section article:hover {
             transform: translateY(-5px); /* Leve levantamento no hover */
-            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.25), 0 6px 10px -3px rgba(0, 0, 0, 0.12); /* Sombra maior no hover */
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.35), 0 6px 10px -3px rgba(0, 0, 0, 0.18); /* Sombra maior no hover */
         }
 
         /* Estilos específicos para o carrossel */
@@ -69,8 +90,9 @@
             position: relative;
             overflow: hidden;
             border-radius: 0.75rem; /* rounded-lg */
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
             margin-top: 1.5rem; /* mt-6 */
+            border: 2px solid var(--color-highlight-gold); /* Borda dourada */
         }
         .carousel-slides {
             display: flex;
@@ -86,7 +108,7 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(255, 255, 255, 0.1); /* Botão sutil em fundos escuros */
+            background-color: rgba(0, 0, 0, 0.4); /* Botão mais escuro */
             color: white;
             border: none;
             padding: 0.75rem;
@@ -96,7 +118,7 @@
             transition: background-color 0.3s ease;
         }
         .carousel-button:hover {
-            background-color: rgba(255, 255, 255, 0.3); /* Mais visível no hover */
+            background-color: rgba(0, 0, 0, 0.6); /* Mais visível no hover */
         }
         .carousel-button-prev {
             left: 1rem;
@@ -119,7 +141,48 @@
             transition: background-color 0.3s ease;
         }
         .carousel-dot.active {
-            background-color: #f87171; /* Vermelho claro vibrante para o ponto ativo */
+            background-color: var(--color-highlight-red); /* Vermelho para o ponto ativo */
+        }
+
+        /* Estilos para o Canvas do Jogo */
+        #gameCanvas {
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.15);
+            border: 2px solid var(--color-highlight-gold); /* Borda dourada */
+        }
+        /* Estilos para os botões de controle do jogo em telas menores */
+        .game-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .game-control-button {
+            background-color: var(--color-highlight-red); /* Vermelho para os botões */
+            color: white;
+            font-weight: bold;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px; /* rounded-full */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .game-control-button:hover {
+            background-color: #DC2626; /* Slightly darker red on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+        }
+        /* Esconde os botões de controle em telas maiores que md */
+        @media (min-width: 768px) { /* md */
+            .game-control-button-mobile {
+                display: none;
+            }
+        }
+        /* Exibe os botões de controle em telas menores que md */
+        @media (max-width: 767px) { /* md */
+            .game-control-button-mobile {
+                display: block; /* Garante que sejam exibidos */
+            }
         }
     </style>
 </head>
@@ -127,7 +190,7 @@
     <div class="container">
         <!-- Título principal -->
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-red-400 mb-8 leading-tight">
-            Nossa História de Amor
+            Nosso Reino de Amor
         </h1>
 
         <!-- Subtítulo e nome do casal -->
@@ -166,12 +229,12 @@
 
         <!-- Seção da Nossa História -->
         <section class="story-section text-gray-300 leading-relaxed space-y-8">
-            <h2 class="text-3xl font-bold text-red-400 mb-6 text-center">Nossa Jornada</h2>
+            <h2 class="text-3xl font-bold text-red-400 mb-6 text-center">A Saga do Nosso Reino</h2>
             
             <article class="bg-gray-800 p-6 rounded-xl shadow-sm">
-                <h3 class="text-2xl font-semibold text-red-400 mb-3">O Início: Digix e o Primeiro Olhar</h3>
-                <p class="mb-4">Nossa história começou a se entrelaçar na empresa <strong class="text-red-400">Digix</strong>, em 2015. O ambiente de trabalho se tornou o palco para os primeiros olhares e as primeiras conversas, que aos poucos transformariam colegas em algo muito mais profundo. Era o prelúdio de uma conexão que só cresceria.</p>
-                <p>Foi em <strong class="text-red-400">2016</strong> que demos o primeiro grande passo e oficializamos nosso namoro. Ali, a amizade e a admiração mútua floresceram em um compromisso, marcando o início da nossa jornada como casal.</p>
+                <h3 class="text-2xl font-semibold text-red-400 mb-3">O Alvorecer do Reino: O Encontro na Cidadela Digix</h3>
+                <p class="mb-4">Nossa história começou a se entrelaçar na Cidadela <strong class="text-red-400">Digix</strong>, em 2015. O ambiente de trabalho se tornou o palco para os primeiros olhares e as primeiras conversas, que aos poucos transformariam colegas em algo muito mais profundo. Era o prelúdio de uma conexão que só cresceria.</p>
+                <p>Foi em <strong class="text-red-400">2016</strong> que demos o primeiro grande passo e oficializamos nosso romance, marcando o início da nossa jornada como casal real.</p>
                 <!-- Carrossel para o início da história -->
                 <div id="carousel-inicio" class="carousel-container">
                     <div class="carousel-slides">
@@ -187,8 +250,8 @@
             </article>
 
             <article class="bg-gray-800 p-6 rounded-xl shadow-sm">
-                <h3 class="text-2xl font-semibold text-red-400 mb-3">O Grande Pedido: Um "Sim" para Sempre</h3>
-                <p class="mb-4">O tempo voou, e o amor só se aprofundou. No dia <strong class="text-red-400">15 de dezembro de 2017</strong>, em um momento que ficará para sempre gravado em nossa memória, fiz a pergunta mais importante da minha vida. Aquele "sim" selou a promessa de um futuro juntos, de construir uma família e compartilhar cada novo capítulo.</p>
+                <h3 class="text-2xl font-semibold text-red-400 mb-3">O Grande Juramento: Um "Sim" Para a Eternidade</h3>
+                <p class="mb-4">O tempo voou, e o amor só se aprofundou. No dia <strong class="text-red-400">15 de dezembro de 2017</strong>, em um momento que ficará para sempre gravado em nossa memória, fiz a pergunta mais importante da minha vida. Aquele "sim" selou a promessa de um futuro juntos, de construir um reino e compartilhar cada novo capítulo.</p>
                 <!-- Novas Imagens para o pedido de casamento -->
                 <div id="carousel-pedido" class="carousel-container">
                     <div class="carousel-slides">
@@ -204,8 +267,8 @@
             </article>
 
             <article class="bg-gray-800 p-6 rounded-xl shadow-sm">
-                <h3 class="text-2xl font-semibold text-red-400 mb-3">O Grande Dia: Um Novo Capítulo</h3>
-                <p class="mb-4">E então, o dia tão esperado chegou! Em <strong class="text-red-400">26 de janeiro de 2019</strong>, celebramos nossa união em casamento. Foi um dia mágico, repleto de alegria, emoção e a certeza de que estávamos começando o melhor capítulo de nossas vidas. Desde então, cada dia é uma nova página escrita a dois, com amor, parceria e muita cumplicidade.</p>
+                <h3 class="text-2xl font-semibold text-red-400 mb-3">O Grande Dia do Casamento Real: Um Novo Capítulo</h3>
+                <p class="mb-4">E então, o dia tão esperado chegou! Em <strong class="text-red-400">26 de janeiro de 2019</strong>, celebramos nossa união em um majestoso casamento real. Foi um dia mágico, repleto de alegria, emoção e a certeza de que estávamos começando o melhor capítulo de nossas vidas. Desde então, cada dia é uma nova página escrita a dois, com amor, parceria e muita cumplicidade.</p>
                 <!-- Novas Imagens para o casamento -->
                 <div id="carousel-casamento" class="carousel-container">
                     <div class="carousel-slides">
@@ -222,11 +285,11 @@
             
             <!-- Nova Seção: A Chegada da Antonela -->
             <article class="bg-gray-800 p-6 rounded-xl shadow-sm">
-                <h3 class="text-2xl font-semibold text-red-400 mb-3">A Chegada da Antonela: Nosso Maior Tesouro</h3>
-                <p class="mb-4">No dia <strong class="text-red-400">05 de setembro de 2024</strong>, nossa família foi abençoada com a chegada da nossa filha, a linda Antonela. Os primeiros 3 meses foram desafiadores, mas superamos cada obstáculo juntos, fortalecendo ainda mais nosso amor e parceria.</p>
+                <h3 class="text-2xl font-semibold text-red-400 mb-3">O Legado Real: A Chegada da Princesa Antonela</h3>
+                <p class="mb-4">No dia <strong class="text-red-400">05 de setembro de 2024</strong>, nosso reino foi abençoado com a chegada da nossa filha, a magnífica Princesa Antonela! Os primeiros 3 meses foram desafiadores, mas superamos cada obstáculo juntos, fortalecendo ainda mais nosso amor e parceria real.</p>
                 <p class="mb-4">Somos completamente apaixonados por essa menininha linda, risonha e esperta, que trouxe uma alegria indescritível para nossas vidas.</p>
-                <p class="mb-4">Recentemente, mudamos de casa e voltamos para o lugar onde toda a nossa história começou, e agora estamos planejando ampliá-lo para que a Antonela tenha um espaço ainda maior para crescer e brincar.</p>
-                <p class="text-center text-red-400 font-semibold">Amo estar em família, elas são meus maiores tesouros.</p>
+                <p class="mb-4">Recentemente, mudamos de castelo e voltamos para as terras onde toda a nossa história começou, e agora estamos planejando ampliar nosso reino para que a Princesa Antonela tenha um espaço ainda maior para crescer e brincar.</p>
+                <p class="text-center text-red-400 font-semibold">Amo estar em família, elas são meus maiores tesouros reais.</p>
                 
                 <!-- Carrossel para a Antonela e família -->
                 <div id="carousel-antonela" class="carousel-container">
@@ -249,9 +312,37 @@
             </article>
 
             <p class="text-center text-lg text-red-400 font-semibold mt-8">
-                E a nossa história continua sendo construída, a cada segundo, com muito amor.
+                E o Nosso Reino de Amor continua a florescer, fortalecendo-se a cada amanhecer e anoitecer.
             </p>
         </section>
+
+        <!-- Nova Seção de Jogo -->
+        <section class="game-section bg-gray-800 p-6 rounded-xl shadow-sm mt-8">
+            <h3 class="text-2xl font-semibold text-red-400 mb-3 text-center">A Jornada do Herói Hiago: Em Busca de Seu Reino Encantado!</h3>
+            <p class="mb-4 text-center text-gray-300">
+                O jovem e destemido Herói Hiago, das terras pitorescas de Corumbá, partiu em 2012 em busca de um futuro grandioso na Capital, Campo Grande, com o sonho de dominar as artes da informática. Mal sabia ele que seu maior destino se revelaria em algo muito mais sublime: conhecer a Princesa Isabela! Juntos, eles teceram os laços do amor, noivaram e se uniram em sagrado matrimônio, e assim, ela ascendeu ao trono como a Rainha Isabela, a mais bela de todas. Em seu reino encantado, a maior riqueza finalmente chegou: a magnífica, a bondosa e risonha Princesa Antonela, filha da Rainha Isabela! Ajude o Herói Hiago a coletar os pergaminhos do conhecimento (computadores) e guiar sua Rainha e sua Princesa até a segurança de seu castelo!
+            </p>
+            <div class="flex flex-col items-center">
+                <canvas id="gameCanvas" width="700" height="400" class="border-2 border-red-400 rounded-lg shadow-lg"></canvas>
+                <div class="mt-4 space-x-4">
+                    <button id="startButton" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full shadow-md transition-all duration-300 transform hover:scale-105">
+                        Iniciar Jornada
+                    </button>
+                    <button id="resetButton" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full shadow-md transition-all duration-300 transform hover:scale-105">
+                        Recomeçar Reino
+                    </button>
+                </div>
+                <!-- Botões de controle para celular/toque -->
+                <div class="game-controls game-control-button-mobile mt-4">
+                    <button id="moveLeftButton" class="game-control-button">← Esquerda</button>
+                    <button id="jumpButton" class="game-control-button">Pular</button>
+                    <button id="moveRightButton" class="game-control-button">Direita →</button>
+                </div>
+                <p class="text-xl text-red-400 mt-4">Tesouros Coletados: <span id="scoreDisplay">0</span> | Vidas do Herói: <span id="livesDisplay">5</span></p>
+                <p class="text-sm text-gray-400 mt-2" id="gameStatus">Pressione 'Iniciar Jornada' para defender seu Reino!</p>
+            </div>
+        </section>
+
     </div>
 
     <script>
@@ -272,18 +363,11 @@
             const diff = now.getTime() - startDate.getTime(); // Diferença em milissegundos
 
             // Calcula os valores
-            // Um ano tem aproximadamente 365.25 dias para considerar anos bissextos
             const totalSeconds = Math.floor(diff / 1000);
             const totalMinutes = Math.floor(totalSeconds / 60);
             const totalHours = Math.floor(totalMinutes / 60);
             const totalDays = Math.floor(totalHours / 24);
 
-            // Cálculo dos anos é mais complexo devido aos anos bissextos
-            // O cálculo mais preciso seria iterar pelos anos, mas para manter a simplicidade
-            // e focar na contagem progressiva de segundos, dias, horas, minutos,
-            // faremos uma aproximação para anos e exibiremos os dias restantes.
-
-            // Para um cálculo de anos mais preciso (considerando a data de início exata):
             let years = now.getFullYear() - startDate.getFullYear();
             let monthDiff = now.getMonth() - startDate.getMonth();
             let dayDiff = now.getDate() - startDate.getDate();
@@ -292,7 +376,6 @@
                 years--;
             }
 
-            // Para exibir os dias, horas, minutos e segundos restantes
             const remainingSeconds = totalSeconds % 60;
             const remainingMinutes = totalMinutes % 60;
             const remainingHours = totalHours % 24;
@@ -301,7 +384,6 @@
 
             // Atualiza o HTML
             yearsEl.textContent = years;
-            // Para exibir os dias de forma acumulada e não apenas os dias restantes do ano corrente:
             daysEl.textContent = totalDays; // Exibe o total de dias
             hoursEl.textContent = remainingHours.toString().padStart(2, '0');
             minutesEl.textContent = remainingMinutes.toString().padStart(2, '0');
@@ -311,18 +393,14 @@
         // Atualiza a contagem a cada segundo
         setInterval(updateCountdown, 1000);
 
-        // Chama a função uma vez ao carregar a página para evitar o atraso inicial
-        updateCountdown();
-
-
         // Lógica do Carrossel de Imagens
-        const carousels = {}; // Objeto para armazenar o estado de cada carrossel
+        const carousels = {};
 
         function initCarousel(carouselId) {
             const carouselContainer = document.getElementById(carouselId);
             const slidesContainer = carouselContainer.querySelector('.carousel-slides');
             const slides = slidesContainer.querySelectorAll('img');
-            const dotsContainer = document.getElementById(`dots-${carouselId.split('-')[1]}`); // Ex: dots-inicio, dots-pedido, dots-casamento, dots-antonela
+            const dotsContainer = document.getElementById(`dots-${carouselId.split('-')[1]}`);
             let currentIndex = 0;
 
             carousels[carouselId] = {
@@ -330,10 +408,9 @@
                 slides: slides,
                 dotsContainer: dotsContainer,
                 currentIndex: currentIndex,
-                autoSlideInterval: null // Para armazenar o ID do intervalo de transição automática
+                autoSlideInterval: null
             };
 
-            // Cria os pontos de navegação
             slides.forEach((_, index) => {
                 const dot = document.createElement('span');
                 dot.classList.add('carousel-dot');
@@ -344,17 +421,15 @@
 
             showSlide(carouselId, currentIndex);
 
-            // Inicia a transição automática
             carousels[carouselId].autoSlideInterval = setInterval(() => {
-                changeSlide(carouselId, 1); // Avança para o próximo slide
-            }, 3000); // A cada 3 segundos
+                changeSlide(carouselId, 1);
+            }, 3000);
         }
 
         function showSlide(carouselId, index) {
             const carousel = carousels[carouselId];
             if (!carousel) return;
 
-            // Ajusta o índice para garantir loop infinito
             if (index >= carousel.slides.length) {
                 carousel.currentIndex = 0;
             } else if (index < 0) {
@@ -363,10 +438,8 @@
                 carousel.currentIndex = index;
             }
 
-            // Move o slidesContainer para mostrar o slide correto
             carousel.slidesContainer.style.transform = `translateX(${-carousel.currentIndex * 100}%)`;
 
-            // Atualiza os pontos de navegação
             const dots = carousel.dotsContainer.querySelectorAll('.carousel-dot');
             dots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === carousel.currentIndex);
@@ -376,23 +449,695 @@
         function changeSlide(carouselId, direction) {
             const carousel = carousels[carouselId];
             if (carousel) {
-                // Ao mudar o slide manualmente, reseta o intervalo para evitar transições imediatas
                 clearInterval(carousel.autoSlideInterval);
                 showSlide(carouselId, carousel.currentIndex + direction);
-                // Reinicia o intervalo após um pequeno atraso
                 carousel.autoSlideInterval = setInterval(() => {
                     changeSlide(carouselId, 1);
                 }, 3000);
             }
         }
 
-        // Inicializa cada carrossel quando a página é carregada
+        // Lógica do Jogo
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const startButton = document.getElementById('startButton');
+        const resetButton = document.getElementById('resetButton');
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        const livesDisplay = document.getElementById('livesDisplay'); // Lives display
+        const gameStatus = document.getElementById('gameStatus');
+
+        // Game state variables
+        let player;
+        let platforms;
+        let computers;
+        let princess;
+        let antonela;
+        let gameRunning = false;
+        let score = 0; // Total score, updated per phase completion
+        let playerLives = 5;
+        let keys = {};
+        let cameraX = 0; // Camera position for scrolling
+        let currentPhase = 'phase1'; // Current game phase
+        let phase1ComputersCollected = 0; // Track computers collected in current phase (for resetting)
+        let phase2ComputersCollected = 0; // Track computers collected in current phase (for resetting)
+        let phase3ComputersCollected = 0; // New: Track computers collected in Phase 3
+
+        // Game constants
+        const GAME_WIDTH = canvas.width;
+        const GAME_HEIGHT = canvas.height;
+        const PLAYER_WIDTH = 20;
+        const PLAYER_HEIGHT = 40;
+        const PLATFORM_HEIGHT = 20;
+        const COMPUTER_SIZE = 15;
+        const GRAVITY = 0.5;
+        const JUMP_STRENGTH = -12;
+        const PLAYER_SPEED = 4;
+        const WORLD_WIDTH_PHASE1 = 1500;
+        const WORLD_WIDTH_PHASE2 = 1200; // Adjusted for Campo Grande layout
+        const WORLD_WIDTH_PHASE3 = 1000; // Adjusted for new enchanted forest layout
+
+        // Background elements
+        let backgroundElements = [];
+        let canvasBackgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-game-background-corumba'); // Default for phase 1 (Corumbá)
+
+        // Class for the Player
+        class Player {
+            constructor(x, y) {
+                this.x = x; // Player's position relative to the world
+                this.y = y;
+                this.width = PLAYER_WIDTH;
+                this.height = PLAYER_HEIGHT;
+                this.dx = 0; // Horizontal velocity
+                this.dy = 0; // Vertical velocity
+                this.isJumping = false;
+            }
+
+            draw() {
+                ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-player-fill'); // Player character color
+                ctx.fillRect(this.x - cameraX, this.y, this.width, this.height); // Draw relative to camera
+
+                // Draw crown in Phase 3
+                if (currentPhase === 'phase3') {
+                    ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-highlight-gold'); // Gold for crown
+                    ctx.font = '20px Arial'; // Larger for visibility
+                    ctx.fillText('👑', this.x - cameraX + this.width / 4, this.y - 10); // Position crown slightly above player
+                }
+            }
+
+            update() {
+                // Apply gravity
+                this.dy += GRAVITY;
+                this.y += this.dy;
+
+                // Apply horizontal movement
+                this.x += this.dx;
+
+                // Prevent player from going out of world bounds horizontally
+                let currentWorldWidth = WORLD_WIDTH_PHASE1;
+                if (currentPhase === 'phase2') currentWorldWidth = WORLD_WIDTH_PHASE2;
+                else if (currentPhase === 'phase3') currentWorldWidth = WORLD_WIDTH_PHASE3;
+
+                if (this.x < 0) this.x = 0;
+                if (this.x + this.width > currentWorldWidth) this.x = currentWorldWidth - this.width;
+            }
+
+            jump() {
+                if (!this.isJumping) {
+                    this.dy = JUMP_STRENGTH;
+                    this.isJumping = true;
+                }
+            }
+        }
+
+        // Class for Platforms
+        class Platform {
+            constructor(x, y, width) {
+                this.x = x;
+                this.y = y;
+                this.width = width;
+                this.height = PLATFORM_HEIGHT;
+            }
+
+            draw() {
+                ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-platform-stone'); // Stone-like for platforms
+                ctx.fillRect(this.x - cameraX, this.y, this.width, this.height); // Draw relative to camera
+            }
+        }
+
+        // Class for Computers (Collectibles)
+        class Computer {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.width = COMPUTER_SIZE;
+                this.height = COMPUTER_SIZE;
+                this.collected = false;
+            }
+
+            draw() {
+                if (!this.collected) {
+                    ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-computer-fill'); // Gold for "computers/coins"
+                    ctx.beginPath();
+                    ctx.arc(this.x - cameraX + this.width / 2, this.y + this.height / 2, this.width / 2, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+        }
+
+        // Class for Princess
+        class Princess {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.width = 30;
+                this.height = 50;
+            }
+
+            draw() {
+                ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-princess-fill'); // Princess pink
+                ctx.fillRect(this.x - cameraX, this.y, this.width, this.height);
+                ctx.fillStyle = 'white';
+                ctx.font = '12px Arial';
+                ctx.fillText('👑', this.x - cameraX + 5, this.y + 20); // Simple crown emoji
+            }
+        }
+
+        // Class for Antonela
+        class Antonela {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.width = 25; // Smaller size for a baby
+                this.height = 35;
+            }
+
+            draw() {
+                ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-antonela-fill'); // Antonela light green
+                ctx.fillRect(this.x - cameraX, this.y, this.width, this.height);
+                ctx.fillStyle = 'black';
+                ctx.font = '12px Arial';
+                ctx.fillText('👶', this.x - cameraX + 5, this.y + 15); // Baby emoji
+            }
+        }
+
+        function initGame() {
+            currentPhase = 'phase1';
+            player = new Player(50, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT);
+            platforms = [
+                new Platform(0, GAME_HEIGHT - PLATFORM_HEIGHT, 100), // Initial ground segment
+                new Platform(150, GAME_HEIGHT - 100, 100),
+                new Platform(300, GAME_HEIGHT - 50, 150),
+                new Platform(500, GAME_HEIGHT - 120, 100),
+                new Platform(650, GAME_HEIGHT - 180, 150),
+                new Platform(850, GAME_HEIGHT - 100, 100),
+                new Platform(1000, GAME_HEIGHT - 50, 200),
+                new Platform(1250, GAME_HEIGHT - 150, 120)
+            ];
+
+            computers = [
+                new Computer(200, GAME_HEIGHT - 130),
+                new Computer(450, GAME_HEIGHT - 80),
+                new Computer(570, GAME_HEIGHT - 150),
+                new Computer(700, GAME_HEIGHT - 210),
+                new Computer(900, GAME_HEIGHT - 130),
+                new Computer(1100, GAME_HEIGHT - 80),
+                new Computer(1300, GAME_HEIGHT - 180)
+            ];
+            
+            // Background elements for Phase 1 (Corumbá)
+            backgroundElements = [
+                { type: 'mountain', x: 50, y: GAME_HEIGHT - 150, width: 200, height: 100, color: '#4a5568' },
+                { type: 'mountain', x: 300, y: GAME_HEIGHT - 180, width: 250, height: 120, color: '#4a5568' },
+                { type: 'building', x: 600, y: GAME_HEIGHT - 200, width: 80, height: 150, color: '#718096' },
+                { type: 'building', x: 700, y: GAME_HEIGHT - 170, width: 60, height: 120, color: '#718096' },
+                { type: 'river', x: 0, y: GAME_HEIGHT - 40, width: WORLD_WIDTH_PHASE1, height: 40, color: '#0d47a1' } // River covers entire world width
+            ];
+            canvasBackgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-game-background-corumba'); // Corumbá background
+
+            score = 0; // Reset score for a fresh game
+            playerLives = 5; // Reset lives for a fresh game
+            phase1ComputersCollected = 0; // Reset
+            phase2ComputersCollected = 0; // Reset
+            phase3ComputersCollected = 0; // Reset
+
+            scoreDisplay.textContent = score;
+            livesDisplay.textContent = playerLives; // Update lives display
+            gameStatus.textContent = 'Pressione \'Iniciar Jornada\' para defender seu Reino!';
+            gameRunning = false;
+            cameraX = 0;
+            princess = null; // Ensure princess is not present in Phase 1
+            antonela = null; // Ensure Antonela is not present in Phase 1
+            drawGame();
+        }
+
+        // Initialize Phase 2 (Campo Grande)
+        function initPhase2() {
+            currentPhase = 'phase2';
+            player = new Player(50, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT); // Reset player position for new phase
+            platforms = [
+                new Platform(0, GAME_HEIGHT - PLATFORM_HEIGHT, 150),
+                new Platform(200, GAME_HEIGHT - 100, 100),
+                new Platform(350, GAME_HEIGHT - 50, 120),
+                new Platform(500, GAME_HEIGHT - 150, 100),
+                new Platform(700, GAME_HEIGHT - 80, 150),
+                new Platform(900, GAME_HEIGHT - 120, 100),
+                new Platform(WORLD_WIDTH_PHASE2 - 200, GAME_HEIGHT - PLATFORM_HEIGHT - 50, 200), // Platform leading to princess
+                new Platform(WORLD_WIDTH_PHASE2 - 150, GAME_HEIGHT - PLATFORM_HEIGHT, 150) // Final ground segment
+            ];
+            computers = [ // Computers for Phase 2 - adjusted for easier last one
+                new Computer(250, GAME_HEIGHT - 130),
+                new Computer(400, GAME_HEIGHT - 80),
+                new Computer(600, GAME_HEIGHT - 180),
+                new Computer(800, GAME_HEIGHT - 150)
+            ]; 
+            // Princess is positioned first, then the last computer is created based on her position
+            princess = new Princess(WORLD_WIDTH_PHASE2 - 80, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT - 50); // Princess at the end of Phase 2
+            computers.push(new Computer(princess.x + princess.width / 2 - COMPUTER_SIZE / 2, princess.y - COMPUTER_SIZE - 5)); // Computer on top of princess
+            
+            antonela = null; // Ensure Antonela is not present in Phase 2
+            
+            // Background elements for Phase 2 (Campo Grande)
+            backgroundElements = [
+                { type: 'building', x: 50, y: GAME_HEIGHT - 180, width: 100, height: 130, color: '#607d8b' }, // Gray-blue building
+                { type: 'building', x: 200, y: GAME_HEIGHT - 140, width: 80, height: 90, color: '#78909c' },
+                { type: 'park_tree', x: 350, y: GAME_HEIGHT - 120, width: 40, height: 80, color: '#4caf50' }, // Green tree (abstract)
+                { type: 'building', x: 500, y: GAME_HEIGHT - 200, width: 120, height: 150, color: '#607d8b' },
+                { type: 'park_tree', x: 700, y: GAME_HEIGHT - 90, width: 30, height: 60, color: '#4caf50' },
+                { type: 'building', x: 850, y: GAME_HEIGHT - 160, width: 90, height: 110, color: '#78909c' },
+                { type: 'obelisco', x: WORLD_WIDTH_PHASE2 - 150, y: GAME_HEIGHT - 180, width: 30, height: 150, color: '#e0e0e0' } // Placeholder for Obelisco-like structure
+            ];
+            canvasBackgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-game-background-campogrande'); // Campo Grande background
+
+            cameraX = 0;
+            gameRunning = true;
+            gameStatus.textContent = 'Fase 2: A Capital! Salve a Rainha Isabela e colete os tesouros!';
+            // Score remains accumulated from previous phase
+            livesDisplay.textContent = playerLives; // Update lives display
+            phase2ComputersCollected = 0; // Reset for new phase
+        }
+
+        // Initialize Phase 3 (Enchanted Forest)
+        function initPhase3() {
+            currentPhase = 'phase3';
+            player = new Player(50, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT); // Reset player position for new phase
+            platforms = [
+                new Platform(0, GAME_HEIGHT - PLATFORM_HEIGHT, 150),
+                new Platform(200, GAME_HEIGHT - 100, 100),
+                new Platform(350, GAME_HEIGHT - 160, 120),
+                new Platform(500, GAME_HEIGHT - 80, 150),
+                new Platform(650, GAME_HEIGHT - 140, 100),
+                new Platform(800, GAME_HEIGHT - PLATFORM_HEIGHT, 100) // Final platform
+            ];
+            computers = [ // Computers for Phase 3 - made easier
+                new Computer(120, GAME_HEIGHT - 50),
+                new Computer(250, GAME_HEIGHT - 130), 
+                new Computer(400, GAME_HEIGHT - 190), 
+                new Computer(550, GAME_HEIGHT - 110), 
+                new Computer(700, GAME_HEIGHT - 170), 
+                new Computer(WORLD_WIDTH_PHASE3 - 100, GAME_HEIGHT - PLAYER_HEIGHT - COMPUTER_SIZE - 5) // Positioned to be easier near Antonela
+            ]; 
+            princess = new Princess(WORLD_WIDTH_PHASE3 - 150, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT - 50); // Princess stays nearby
+            antonela = new Antonela(WORLD_WIDTH_PHASE3 - 80, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT - 50); // Antonela at the end
+            
+            // Background elements for Phase 3 (Enchanted Forest)
+            backgroundElements = [
+                { type: 'tree', x: 50, y: GAME_HEIGHT - 180, width: 60, height: 120, color: '#228B22' }, // Forest Green tree
+                { type: 'mushroom', x: 180, y: GAME_HEIGHT - 50, width: 20, height: 30, color: '#FF4500' }, // OrangeRed mushroom
+                { type: 'tree', x: 280, y: GAME_HEIGHT - 150, width: 70, height: 110, color: '#32CD32' }, // Lime Green tree
+                { type: 'mushroom', x: 400, y: GAME_HEIGHT - 100, width: 25, height: 35, color: '#FF6347' }, // Tomato mushroom
+                { type: 'tree', x: 500, y: GAME_HEIGHT - 200, width: 80, height: 150, color: '#006400' }, // Dark Green tree
+                { type: 'mushroom', x: 700, y: GAME_HEIGHT - 50, width: 20, height: 30, color: '#DAA520' }, // Goldenrod mushroom
+                { type: 'tree', x: 850, y: GAME_HEIGHT - 170, width: 65, height: 130, color: '#2E8B57' } // Sea Green tree
+            ];
+            canvasBackgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-game-background-bosque'); // Sky Blue for enchanted forest sky
+
+            cameraX = 0;
+            gameRunning = true;
+            gameStatus.textContent = 'Fase 3: O Bosque Encantado! Hiago e sua Rainha, salvem a Princesa Antonela!';
+            livesDisplay.textContent = playerLives; // Update lives display
+            phase3ComputersCollected = 0; // Reset for new phase
+        }
+
+        // Function to restart the current phase
+        function restartCurrentPhaseState() {
+            // Re-initialize the current phase to reset player position and phase elements
+            // IMPORTANT: Lives and score are NOT reset here, only on initGame()
+            if (currentPhase === 'phase1') {
+                // Re-setup phase 1 elements (platforms, computers, player pos)
+                // This is effectively a soft reset of initGame() without resetting score/lives
+                player = new Player(50, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT);
+                platforms = [
+                    new Platform(0, GAME_HEIGHT - PLATFORM_HEIGHT, 100), // Initial ground segment
+                    new Platform(150, GAME_HEIGHT - 100, 100),
+                    new Platform(300, GAME_HEIGHT - 50, 150),
+                    new Platform(500, GAME_HEIGHT - 120, 100),
+                    new Platform(650, GAME_HEIGHT - 180, 150),
+                    new Platform(850, GAME_HEIGHT - 100, 100),
+                    new Platform(1000, GAME_HEIGHT - 50, 200),
+                    new Platform(1250, GAME_HEIGHT - 150, 120)
+                ];
+                computers = [
+                    new Computer(200, GAME_HEIGHT - 130),
+                    new Computer(450, GAME_HEIGHT - 80),
+                    new Computer(570, GAME_HEIGHT - 150),
+                    new Computer(700, GAME_HEIGHT - 210),
+                    new Computer(900, GAME_HEIGHT - 130),
+                    new Computer(1100, GAME_HEIGHT - 80),
+                    new Computer(1300, GAME_HEIGHT - 180)
+                ];
+                computers.forEach(c => c.collected = false); // Ensure computers are uncollected
+                phase1ComputersCollected = 0; // Reset counter
+                canvasBackgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-game-background-corumba'); // Corumbá background
+                princess = null; antonela = null; // Not in this phase
+            } else if (currentPhase === 'phase2') {
+                player = new Player(50, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT);
+                platforms = [
+                    new Platform(0, GAME_HEIGHT - PLATFORM_HEIGHT, 150),
+                    new Platform(200, GAME_HEIGHT - 100, 100),
+                    new Platform(350, GAME_HEIGHT - 50, 120),
+                    new Platform(500, GAME_HEIGHT - 150, 100),
+                    new Platform(700, GAME_HEIGHT - 80, 150),
+                    new Platform(900, GAME_HEIGHT - 120, 100),
+                    new Platform(WORLD_WIDTH_PHASE2 - 200, GAME_HEIGHT - PLATFORM_HEIGHT - 50, 200),
+                    new Platform(WORLD_WIDTH_PHASE2 - 150, GAME_HEIGHT - PLATFORM_HEIGHT, 150)
+                ];
+                computers = [
+                    new Computer(250, GAME_HEIGHT - 130),
+                    new Computer(400, GAME_HEIGHT - 80),
+                    new Computer(600, GAME_HEIGHT - 180),
+                    new Computer(800, GAME_HEIGHT - 150)
+                ];
+                princess = new Princess(WORLD_WIDTH_PHASE2 - 80, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT - 50);
+                computers.push(new Computer(princess.x + princess.width / 2 - COMPUTER_SIZE / 2, princess.y - COMPUTER_SIZE - 5)); // Computer on top of princess
+                
+                computers.forEach(c => c.collected = false); // Ensure computers are uncollected
+                phase2ComputersCollected = 0; // Reset counter
+                canvasBackgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-game-background-campogrande'); // Campo Grande background
+                antonela = null; // Not in this phase
+            } else if (currentPhase === 'phase3') {
+                player = new Player(50, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT);
+                platforms = [
+                    new Platform(0, GAME_HEIGHT - PLATFORM_HEIGHT, 150),
+                    new Platform(200, GAME_HEIGHT - 100, 100),
+                    new Platform(350, GAME_HEIGHT - 160, 120),
+                    new Platform(500, GAME_HEIGHT - 80, 150),
+                    new Platform(650, GAME_HEIGHT - 140, 100),
+                    new Platform(800, GAME_HEIGHT - PLATFORM_HEIGHT, 100) // Final platform
+                ];
+                computers = [ // Computers for Phase 3
+                    new Computer(120, GAME_HEIGHT - 50),
+                    new Computer(250, GAME_HEIGHT - 130), 
+                    new Computer(400, GAME_HEIGHT - 190), 
+                    new Computer(550, GAME_HEIGHT - 110), 
+                    new Computer(700, GAME_HEIGHT - 170), 
+                    new Computer(WORLD_WIDTH_PHASE3 - 100, GAME_HEIGHT - PLAYER_HEIGHT - COMPUTER_SIZE - 5) // Near Antonela
+                ]; 
+                computers.forEach(c => c.collected = false); // Ensure computers are uncollected
+                phase3ComputersCollected = 0; // Reset counter
+                canvasBackgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-game-background-bosque'); // Sky Blue for enchanted forest sky
+                princess = new Princess(WORLD_WIDTH_PHASE3 - 150, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT - 50); // Princess stays nearby
+                antonela = new Antonela(WORLD_WIDTH_PHASE3 - 80, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT - 50); // Antonela at the end
+            }
+            cameraX = 0; // Reset camera
+        }
+
+
+        function drawGame() {
+            ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+
+            // Draw dynamic background color
+            ctx.fillStyle = canvasBackgroundColor;
+            ctx.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+
+            // Draw background elements (parallax effect - slower movement)
+            backgroundElements.forEach(el => {
+                ctx.fillStyle = el.color;
+                if (el.type === 'mountain' || el.type === 'building') {
+                    ctx.fillRect(el.x - cameraX * 0.5, el.y, el.width, el.height);
+                } else if (el.type === 'river') {
+                    ctx.fillRect(el.x - cameraX * 0.8, el.y, el.width, el.height);
+                } else if (el.type === 'park_tree' || el.type === 'tree') {
+                    // Simple tree: trunk and circle for leaves
+                    ctx.fillStyle = '#8b4513'; // Brown for trunk
+                    ctx.fillRect(el.x - cameraX * 0.5 + el.width/2 - 5, el.y + el.height * 0.7, 10, el.height * 0.3); // Trunk
+                    ctx.fillStyle = el.color; // Green for leaves
+                    ctx.beginPath();
+                    ctx.arc(el.x - cameraX * 0.5 + el.width/2, el.y + el.height * 0.7, el.width/2, 0, Math.PI * 2); // Leaves
+                    ctx.fill();
+                } else if (el.type === 'obelisco' || el.type === 'monument') {
+                    ctx.fillStyle = el.color;
+                    ctx.beginPath();
+                    ctx.moveTo(el.x - cameraX * 0.5, el.y + el.height);
+                    ctx.lineTo(el.x - cameraX * 0.5 + el.width, el.y + el.height);
+                    ctx.lineTo(el.x - cameraX * 0.5 + el.width / 2, el.y);
+                    ctx.closePath();
+                    ctx.fill();
+                } else if (el.type === 'mushroom') {
+                    // Simple mushroom: stem and cap
+                    ctx.fillStyle = '#f5deb3'; // Wheat for stem
+                    ctx.fillRect(el.x - cameraX * 0.5 + el.width/2 - 5, el.y + el.height * 0.6, 10, el.height * 0.4); // Stem
+                    ctx.fillStyle = el.color; // Mushroom cap color
+                    ctx.beginPath();
+                    ctx.arc(el.x - cameraX * 0.5 + el.width/2, el.y + el.height * 0.6, el.width/2, 0, Math.PI, true); // Cap
+                    ctx.closePath();
+                    ctx.fill();
+                }
+            });
+
+            // Draw platforms relative to camera
+            platforms.forEach(platform => platform.draw());
+
+            // Draw computers relative to camera
+            computers.forEach(computer => computer.draw());
+
+            // Draw princess if in Phase 2 or 3
+            if (princess) {
+                princess.draw();
+            }
+            // Draw Antonela if in Phase 3
+            if (antonela) {
+                antonela.draw();
+            }
+
+            // Draw player
+            player.draw();
+        }
+
+        function updateGame() {
+            if (!gameRunning) return;
+
+            // Horizontal movement (keyboard)
+            player.dx = 0;
+            if (keys['ArrowLeft']) player.dx = -PLAYER_SPEED;
+            if (keys['ArrowRight']) player.dx = PLAYER_SPEED;
+
+            player.update();
+
+            // Player collision with platforms
+            player.isJumping = true; // Assume in air until collision
+            platforms.forEach(platform => {
+                // Simple AABB collision detection
+                if (player.x < platform.x + platform.width &&
+                    player.x + player.width > platform.x &&
+                    player.y + player.height > platform.y &&
+                    player.y < platform.y + platform.height) {
+
+                    // If falling and lands on top of platform
+                    if (player.dy > 0 && player.y + player.height - player.dy <= platform.y) {
+                        player.y = platform.y - player.height;
+                        player.dy = 0;
+                        player.isJumping = false;
+                    }
+                    // If hitting from bottom (e.g., jump into a platform)
+                    else if (player.dy < 0 && player.y < platform.y + platform.height) {
+                        player.y = platform.y + platform.height;
+                        player.dy = 0; // Stop upward movement
+                    }
+                }
+            });
+
+            // If player falls below canvas (death condition)
+            if (player.y + player.height > GAME_HEIGHT + 50) {
+                gameRunning = false;
+                playerLives--; // Decrease a life
+                livesDisplay.textContent = playerLives; // Update lives display
+
+                if (playerLives <= 0) {
+                    gameStatus.textContent = 'Game Over! Sem vidas restantes. Pontuação Final: ' + score;
+                    setTimeout(() => initGame(), 2000); // Fully reset the game after a short delay
+                } else {
+                    gameStatus.textContent = `Você caiu! Vidas restantes: ${playerLives}. Reiniciando fase...`;
+                    setTimeout(() => restartCurrentPhaseState(), 1500); // Restart current phase after a short delay
+                }
+                return; // Exit updateGame to prevent further processing
+            }
+
+            // Game logic per phase
+            let currentWorldWidth;
+            if (currentPhase === 'phase1') {
+                currentWorldWidth = WORLD_WIDTH_PHASE1;
+                // Collect computers for Phase 1
+                computers.forEach(computer => {
+                    if (!computer.collected &&
+                        player.x < computer.x + computer.width &&
+                        player.x + player.width > computer.x &&
+                        player.y < computer.y + computer.height &&
+                        player.y + player.height > computer.y) {
+                        computer.collected = true;
+                        phase1ComputersCollected++; // Track collected computers in current phase
+                    }
+                });
+
+                // Phase 1 Win condition: All computers collected
+                if (phase1ComputersCollected === computers.length) { // Check against total expected computers
+                    gameRunning = false;
+                    playerLives++; // Add a life for completing a phase
+                    livesDisplay.textContent = playerLives; // Update lives display
+                    score += computers.length * 10; // Add score for completing phase 1 (dynamic based on computers)
+                    scoreDisplay.textContent = score; // Update score display
+                    gameStatus.textContent = 'Tesouros coletados! Vida extra garantida! Prepare-se para a Fase 2: O Desafio da Capital!';
+                    setTimeout(() => {
+                        initPhase2();
+                        gameRunning = true;
+                        requestAnimationFrame(gameLoop);
+                    }, 1500);
+                    return;
+                }
+            } else if (currentPhase === 'phase2') {
+                currentWorldWidth = WORLD_WIDTH_PHASE2;
+                // Collect computers for Phase 2
+                computers.forEach(computer => {
+                    if (!computer.collected &&
+                        player.x < computer.x + computer.width &&
+                        player.x + player.width > computer.x &&
+                        player.y < computer.y + computer.height &&
+                        player.y + player.height > computer.y) {
+                        computer.collected = true;
+                        phase2ComputersCollected++; // Track collected computers in current phase
+                    }
+                });
+
+                // Phase 2 Win condition: All computers collected AND reach the princess
+                if (phase2ComputersCollected === computers.length && princess && // Check against total expected computers
+                    player.x < princess.x + princess.width &&
+                    player.x + player.width > princess.x &&
+                    player.y < princess.y + princess.height &&
+                    player.y + player.height > princess.y) {
+                    gameRunning = false;
+                    playerLives++; // Add a life for completing a phase
+                    livesDisplay.textContent = playerLives; // Update lives display
+                    score += computers.length * 10; // Add score for completing phase 2 (dynamic based on computers)
+                    scoreDisplay.textContent = score; // Update score display
+                    gameStatus.textContent = 'Rainha Isabela resgatada e mais tesouros coletados! Vida extra concedida! Rumo à Fase 3: O Bosque Encantado!';
+                    setTimeout(() => {
+                        initPhase3();
+                        gameRunning = true;
+                        requestAnimationFrame(gameLoop);
+                    }, 1500);
+                    return;
+                }
+            } else if (currentPhase === 'phase3') {
+                currentWorldWidth = WORLD_WIDTH_PHASE3;
+                // Collect computers for Phase 3
+                computers.forEach(computer => {
+                    if (!computer.collected &&
+                        player.x < computer.x + computer.width &&
+                        player.x + player.width > computer.x &&
+                        player.y < computer.y + computer.height &&
+                        player.y + player.height > computer.y) {
+                        computer.collected = true;
+                        phase3ComputersCollected++; // Track collected computers in current phase
+                    }
+                });
+
+                // Phase 3 Win condition: All computers collected AND reach Antonela
+                if (phase3ComputersCollected === computers.length && antonela &&
+                    player.x < antonela.x + antonela.width &&
+                    player.x + player.width > antonela.x &&
+                    player.y < antonela.y + antonela.height &&
+                    player.y + player.height > antonela.y) {
+                    gameRunning = false;
+                    score += computers.length * 10; // Add score for completing phase 3 (dynamic based on computers)
+                    scoreDisplay.textContent = score; // Update score display
+                    gameStatus.textContent = 'Vitória Completa! E o Herói Hiago e sua Rainha Isabela viveram felizes para sempre em seu Reino Encantado! Pontuação Final: ' + score;
+                    // At this point, the game is fully won, no more phases.
+                    // You might want to add a "Play Again?" button here.
+                }
+            }
+
+
+            // Update camera position to follow the player, clamped to world bounds
+            cameraX = player.x - (GAME_WIDTH / 2) + (PLAYER_WIDTH / 2);
+            if (cameraX < 0) cameraX = 0;
+            if (cameraX + GAME_WIDTH > currentWorldWidth) cameraX = currentWorldWidth - GAME_WIDTH;
+        }
+
+        function gameLoop() {
+            updateGame();
+            drawGame();
+            if (gameRunning) {
+                requestAnimationFrame(gameLoop);
+            }
+        }
+
+        // Event Listeners for player control (Keyboard)
+        document.addEventListener('keydown', (e) => {
+            keys[e.key] = true;
+            if (e.key === ' ' && gameRunning) {
+                player.jump();
+            }
+        });
+
+        document.addEventListener('keyup', (e) => {
+            keys[e.key] = false;
+        });
+        
+        // Event Listeners for player control (Touch Buttons)
+        const moveLeftButton = document.getElementById('moveLeftButton');
+        const jumpButton = document.getElementById('jumpButton');
+        const moveRightButton = document.getElementById('moveRightButton');
+
+        // Move Left Button
+        if (moveLeftButton) {
+            moveLeftButton.addEventListener('touchstart', (e) => {
+                e.preventDefault(); // Prevent default touch behavior (e.g., scrolling)
+                if (gameRunning) keys['ArrowLeft'] = true;
+            });
+            moveLeftButton.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                if (gameRunning) keys['ArrowLeft'] = false;
+            });
+        }
+
+        // Jump Button
+        if (jumpButton) {
+            jumpButton.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                if (gameRunning) player.jump();
+            });
+            jumpButton.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                // No specific action on touchend for jump, but good practice to have it.
+            });
+        }
+
+        // Move Right Button
+        if (moveRightButton) {
+            moveRightButton.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                if (gameRunning) keys['ArrowRight'] = true;
+            });
+            moveRightButton.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                if (gameRunning) keys['ArrowRight'] = false;
+            });
+        }
+
+
+        startButton.addEventListener('click', () => {
+            if (!gameRunning) {
+                // If starting after a "Game Over" or "Victory"
+                if (gameStatus.textContent.includes('Game Over') || gameStatus.textContent.includes('Parabéns') || gameStatus.textContent.includes('Vitória Completa')) {
+                     initGame(); // Reinitialize for Phase 1
+                }
+                gameRunning = true;
+                gameStatus.textContent = 'Jogo em andamento! Use as setas para mover, espaço para pular (ou toque nos botões abaixo).';
+                gameLoop();
+            }
+        });
+
+        resetButton.addEventListener('click', () => {
+            initGame(); // Always reset to Phase 1, starting a new game
+        });
+
+        // Initialize all carousels and the game when the page is loaded
         window.onload = function() {
-            updateCountdown(); // Garante que o contador inicie imediatamente
+            updateCountdown();
             initCarousel('carousel-inicio');
             initCarousel('carousel-pedido');
             initCarousel('carousel-casamento');
-            initCarousel('carousel-antonela'); // Inicializa o novo carrossel da Antonela
+            initCarousel('carousel-antonela');
+            initGame(); // Initialize the game on page load
         };
 
     </script>

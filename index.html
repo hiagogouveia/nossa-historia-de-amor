@@ -140,7 +140,7 @@
             <h2 class="text-3xl font-semibold text-white text-center mb-6">
                 Juntos há:
             </h2>
-            <div id="countdown" class="countdown-grid grid gap-4 justify-items-center">
+            <div id="countdown" class="countdown-grid grid grid-cols-1 md:grid-cols-5 gap-4 justify-items-center">
                 <div class="countdown-item">
                     <div id="years" class="countdown-value">0</div>
                     <div class="countdown-label">anos</div>
@@ -189,7 +189,7 @@
             <article class="bg-gray-800 p-6 rounded-xl shadow-sm">
                 <h3 class="text-2xl font-semibold text-red-400 mb-3">O Grande Pedido: Um "Sim" para Sempre</h3>
                 <p class="mb-4">O tempo voou, e o amor só se aprofundou. No dia <strong class="text-red-400">15 de dezembro de 2017</strong>, em um momento que ficará para sempre gravado em nossa memória, fiz a pergunta mais importante da minha vida. Aquele "sim" selou a promessa de um futuro juntos, de construir uma família e compartilhar cada novo capítulo.</p>
-                <!-- Carrossel para o pedido de casamento -->
+                <!-- Novas Imagens para o pedido de casamento -->
                 <div id="carousel-pedido" class="carousel-container">
                     <div class="carousel-slides">
                         <img src="imagens/IMG_1412.jpg" alt="Hiago e Isabela, momento do pedido">
@@ -206,7 +206,7 @@
             <article class="bg-gray-800 p-6 rounded-xl shadow-sm">
                 <h3 class="text-2xl font-semibold text-red-400 mb-3">O Grande Dia: Um Novo Capítulo</h3>
                 <p class="mb-4">E então, o dia tão esperado chegou! Em <strong class="text-red-400">26 de janeiro de 2019</strong>, celebramos nossa união em casamento. Foi um dia mágico, repleto de alegria, emoção e a certeza de que estávamos começando o melhor capítulo de nossas vidas. Desde então, cada dia é uma nova página escrita a dois, com amor, parceria e muita cumplicidade.</p>
-                <!-- Carrossel para o casamento -->
+                <!-- Novas Imagens para o casamento -->
                 <div id="carousel-casamento" class="carousel-container">
                     <div class="carousel-slides">
                         <img src="imagens/WhatsApp Image 2018-11-01 at 18.03.18 (10).jpg" alt="Hiago e Isabela, foto do casamento">
@@ -220,6 +220,34 @@
                 </div>
             </article>
             
+            <!-- Nova Seção: A Chegada da Antonela -->
+            <article class="bg-gray-800 p-6 rounded-xl shadow-sm">
+                <h3 class="text-2xl font-semibold text-red-400 mb-3">A Chegada da Antonela: Nosso Maior Tesouro</h3>
+                <p class="mb-4">No dia <strong class="text-red-400">05 de setembro de 2024</strong>, nossa família foi abençoada com a chegada da nossa filha, a linda Antonela. Os primeiros 3 meses foram desafiadores, mas superamos cada obstáculo juntos, fortalecendo ainda mais nosso amor e parceria.</p>
+                <p class="mb-4">Somos completamente apaixonados por essa menininha linda, risonha e esperta, que trouxe uma alegria indescritível para nossas vidas.</p>
+                <p class="mb-4">Recentemente, mudamos de casa e voltamos para o lugar onde toda a nossa história começou, e agora estamos planejando ampliá-lo para que a Antonela tenha um espaço ainda maior para crescer e brincar.</p>
+                <p class="text-center text-red-400 font-semibold">Amo estar em família, elas são meus maiores tesouros.</p>
+                
+                <!-- Carrossel para a Antonela e família -->
+                <div id="carousel-antonela" class="carousel-container">
+                    <div class="carousel-slides">
+                        <img src="imagens/20250609_084434.jpg" alt="Antonela no berço">
+                        <img src="imagens/20241229_195036.jpg" alt="Isabela e Antonela">
+                        <img src="imagens/20250404_184142.jpg" alt="Antonela de kimono">
+                        <img src="imagens/20250404_184145.jpg" alt="Antonela de kimono sorrindo">
+                        <img src="imagens/20240905_165130.jpg" alt="Hiago, Isabela e Antonela recém-nascida">
+                        <img src="imagens/20241024_170547.jpg" alt="Hiago, Isabela e Antonela no carrinho">
+                        <img src="imagens/20241212_193929.jpg" alt="Hiago, Isabela e Antonela em evento">
+                        <img src="imagens/20250126_093529.jpg" alt="Família ao ar livre">
+                        <img src="imagens/20250405_084524.jpg" alt="Antonela de óculos">
+                        <img src="imagens/20250524_230734.jpg" alt="Família em festa">
+                    </div>
+                    <button class="carousel-button carousel-button-prev" onclick="changeSlide('carousel-antonela', -1)">&#10094;</button>
+                    <button class="carousel-button carousel-button-next" onclick="changeSlide('carousel-antonela', 1)">&#10095;</button>
+                    <div class="carousel-dots" id="dots-antonela"></div>
+                </div>
+            </article>
+
             <p class="text-center text-lg text-red-400 font-semibold mt-8">
                 E a nossa história continua sendo construída, a cada segundo, com muito amor.
             </p>
@@ -294,7 +322,7 @@
             const carouselContainer = document.getElementById(carouselId);
             const slidesContainer = carouselContainer.querySelector('.carousel-slides');
             const slides = slidesContainer.querySelectorAll('img');
-            const dotsContainer = document.getElementById(`dots-${carouselId.split('-')[1]}`); // Ex: dots-inicio, dots-pedido, dots-casamento
+            const dotsContainer = document.getElementById(`dots-${carouselId.split('-')[1]}`); // Ex: dots-inicio, dots-pedido, dots-casamento, dots-antonela
             let currentIndex = 0;
 
             carousels[carouselId] = {
@@ -364,6 +392,7 @@
             initCarousel('carousel-inicio');
             initCarousel('carousel-pedido');
             initCarousel('carousel-casamento');
+            initCarousel('carousel-antonela'); // Inicializa o novo carrossel da Antonela
         };
 
     </script>

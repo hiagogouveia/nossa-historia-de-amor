@@ -11,8 +11,8 @@
         /* Define a fonte Inter para todo o corpo da página */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #e3f2fd; /* Azul claro suave para um toque moderno */
-            color: #2d3748; /* Texto cinza escuro para contraste */
+            background-color: #1a202c; /* Cinza escuro/quase preto para o fundo */
+            color: #cbd5e0; /* Texto claro para contraste */
             display: flex;
             justify-content: center;
             align-items: flex-start; /* Alinha o conteúdo ao topo */
@@ -21,8 +21,8 @@
         }
         /* Estilo para o container principal */
         .container {
-            background-color: #ffffff; /* Fundo branco para o conteúdo */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Sombra suave */
+            background-color: #2d3748; /* Cinza escuro para o conteúdo principal */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15); /* Sombra mais intensa */
             max-width: 900px; /* Largura máxima do conteúdo */
             width: 100%;
             border-radius: 1.5rem; /* Bordas arredondadas */
@@ -31,7 +31,7 @@
         }
         /* Estilos para os blocos de contagem */
         .countdown-item {
-            background-color: #bbdefb; /* Azul mais claro para os itens */
+            background-color: #4a5568; /* Cinza um pouco mais claro para os itens */
             border-radius: 1rem; /* Bordas arredondadas */
             padding: 1.5rem 1rem;
             text-align: center;
@@ -41,17 +41,17 @@
         }
         .countdown-item:hover {
             transform: scale(1.05); /* Leve zoom no hover */
-            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.15), 0 6px 10px -3px rgba(0, 0, 0, 0.08); /* Sombra maior no hover */
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.25), 0 6px 10px -3px rgba(0, 0, 0, 0.12); /* Sombra maior no hover */
         }
         .countdown-value {
             font-size: 2.5rem; /* Tamanho da fonte grande para o valor */
             font-weight: 700; /* Negrito */
-            color: #1976d2; /* Azul vibrante */
+            color: #f87171; /* Vermelho claro vibrante */
             line-height: 1; /* Altura da linha para melhor espaçamento */
         }
         .countdown-label {
             font-size: 0.9rem; /* Tamanho da fonte para o rótulo */
-            color: #0d47a1; /* Azul escuro para o rótulo */
+            color: #a0aec0; /* Cinza claro para o rótulo */
             margin-top: 0.5rem;
         }
 
@@ -61,7 +61,7 @@
         }
         .story-section article:hover {
             transform: translateY(-5px); /* Leve levantamento no hover */
-            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.15), 0 6px 10px -3px rgba(0, 0, 0, 0.08); /* Sombra maior no hover */
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.25), 0 6px 10px -3px rgba(0, 0, 0, 0.12); /* Sombra maior no hover */
         }
 
         /* Estilos específicos para o carrossel */
@@ -86,7 +86,7 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(255, 255, 255, 0.1); /* Botão sutil em fundos escuros */
             color: white;
             border: none;
             padding: 0.75rem;
@@ -96,7 +96,7 @@
             transition: background-color 0.3s ease;
         }
         .carousel-button:hover {
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(255, 255, 255, 0.3); /* Mais visível no hover */
         }
         .carousel-button-prev {
             left: 1rem;
@@ -113,30 +113,30 @@
         .carousel-dot {
             width: 0.75rem;
             height: 0.75rem;
-            background-color: #a7d9f7; /* Light blue */
+            background-color: #718096; /* Cinza médio para os pontos */
             border-radius: 50%;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
         .carousel-dot.active {
-            background-color: #1976d2; /* Vibrant blue */
+            background-color: #f87171; /* Vermelho claro vibrante para o ponto ativo */
         }
     </style>
 </head>
-<body class="selection:bg-blue-100 selection:text-blue-900">
+<body class="selection:bg-red-800 selection:text-white">
     <div class="container">
         <!-- Título principal -->
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-blue-700 mb-8 leading-tight">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-red-400 mb-8 leading-tight">
             Nossa História de Amor
         </h1>
 
         <!-- Subtítulo e nome do casal -->
-        <p class="text-xl md:text-2xl text-center text-blue-500 mb-10">
+        <p class="text-xl md:text-2xl text-center text-gray-300 mb-10">
             Hiago & Isabela
         </p>
 
         <!-- Seção do Contador de Tempo -->
-        <div class="bg-gradient-to-r from-blue-400 to-indigo-400 p-6 rounded-2xl mb-12 shadow-lg">
+        <div class="bg-gradient-to-r from-gray-900 to-black p-6 rounded-2xl mb-12 shadow-lg">
             <h2 class="text-3xl font-semibold text-white text-center mb-6">
                 Juntos há:
             </h2>
@@ -165,13 +165,13 @@
         </div>
 
         <!-- Seção da Nossa História -->
-        <section class="story-section text-gray-700 leading-relaxed space-y-8">
-            <h2 class="text-3xl font-bold text-blue-700 mb-6 text-center">Nossa Jornada</h2>
+        <section class="story-section text-gray-300 leading-relaxed space-y-8">
+            <h2 class="text-3xl font-bold text-red-400 mb-6 text-center">Nossa Jornada</h2>
             
-            <article class="bg-blue-50 p-6 rounded-xl shadow-sm">
-                <h3 class="text-2xl font-semibold text-blue-600 mb-3">O Início: Digix e o Primeiro Olhar</h3>
-                <p class="mb-4">Nossa história começou a se entrelaçar na empresa <strong class="text-blue-700">Digix</strong>, em 2015. O ambiente de trabalho se tornou o palco para os primeiros olhares e as primeiras conversas, que aos poucos transformariam colegas em algo muito mais profundo. Era o prelúdio de uma conexão que só cresceria.</p>
-                <p>Foi em <strong class="text-blue-700">2016</strong> que demos o primeiro grande passo e oficializamos nosso namoro. Ali, a amizade e a admiração mútua floresceram em um compromisso, marcando o início da nossa jornada como casal.</p>
+            <article class="bg-gray-800 p-6 rounded-xl shadow-sm">
+                <h3 class="text-2xl font-semibold text-red-400 mb-3">O Início: Digix e o Primeiro Olhar</h3>
+                <p class="mb-4">Nossa história começou a se entrelaçar na empresa <strong class="text-red-400">Digix</strong>, em 2015. O ambiente de trabalho se tornou o palco para os primeiros olhares e as primeiras conversas, que aos poucos transformariam colegas em algo muito mais profundo. Era o prelúdio de uma conexão que só cresceria.</p>
+                <p>Foi em <strong class="text-red-400">2016</strong> que demos o primeiro grande passo e oficializamos nosso namoro. Ali, a amizade e a admiração mútua floresceram em um compromisso, marcando o início da nossa jornada como casal.</p>
                 <!-- Carrossel para o início da história -->
                 <div id="carousel-inicio" class="carousel-container">
                     <div class="carousel-slides">
@@ -186,9 +186,9 @@
                 </div>
             </article>
 
-            <article class="bg-blue-50 p-6 rounded-xl shadow-sm">
-                <h3 class="text-2xl font-semibold text-blue-600 mb-3">O Grande Pedido: Um "Sim" para Sempre</h3>
-                <p class="mb-4">O tempo voou, e o amor só se aprofundou. No dia <strong class="text-blue-700">15 de dezembro de 2017</strong>, em um momento que ficará para sempre gravado em nossa memória, fiz a pergunta mais importante da minha vida. Aquele "sim" selou a promessa de um futuro juntos, de construir uma família e compartilhar cada novo capítulo.</p>
+            <article class="bg-gray-800 p-6 rounded-xl shadow-sm">
+                <h3 class="text-2xl font-semibold text-red-400 mb-3">O Grande Pedido: Um "Sim" para Sempre</h3>
+                <p class="mb-4">O tempo voou, e o amor só se aprofundou. No dia <strong class="text-red-400">15 de dezembro de 2017</strong>, em um momento que ficará para sempre gravado em nossa memória, fiz a pergunta mais importante da minha vida. Aquele "sim" selou a promessa de um futuro juntos, de construir uma família e compartilhar cada novo capítulo.</p>
                 <!-- Carrossel para o pedido de casamento -->
                 <div id="carousel-pedido" class="carousel-container">
                     <div class="carousel-slides">
@@ -203,9 +203,9 @@
                 </div>
             </article>
 
-            <article class="bg-blue-50 p-6 rounded-xl shadow-sm">
-                <h3 class="text-2xl font-semibold text-blue-600 mb-3">O Grande Dia: Um Novo Capítulo</h3>
-                <p class="mb-4">E então, o dia tão esperado chegou! Em <strong class="text-blue-700">26 de janeiro de 2019</strong>, celebramos nossa união em casamento. Foi um dia mágico, repleto de alegria, emoção e a certeza de que estávamos começando o melhor capítulo de nossas vidas. Desde então, cada dia é uma nova página escrita a dois, com amor, parceria e muita cumplicidade.</p>
+            <article class="bg-gray-800 p-6 rounded-xl shadow-sm">
+                <h3 class="text-2xl font-semibold text-red-400 mb-3">O Grande Dia: Um Novo Capítulo</h3>
+                <p class="mb-4">E então, o dia tão esperado chegou! Em <strong class="text-red-400">26 de janeiro de 2019</strong>, celebramos nossa união em casamento. Foi um dia mágico, repleto de alegria, emoção e a certeza de que estávamos começando o melhor capítulo de nossas vidas. Desde então, cada dia é uma nova página escrita a dois, com amor, parceria e muita cumplicidade.</p>
                 <!-- Carrossel para o casamento -->
                 <div id="carousel-casamento" class="carousel-container">
                     <div class="carousel-slides">
@@ -220,7 +220,7 @@
                 </div>
             </article>
             
-            <p class="text-center text-lg text-blue-600 font-semibold mt-8">
+            <p class="text-center text-lg text-red-400 font-semibold mt-8">
                 E a nossa história continua sendo construída, a cada segundo, com muito amor.
             </p>
         </section>

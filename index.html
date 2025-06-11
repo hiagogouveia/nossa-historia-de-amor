@@ -565,24 +565,24 @@
             }
 
             draw() {
-                ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-player-fill'); // Player character color
-                ctx.fillRect(this.x - cameraX, this.y, this.width, this.height); // Draw relative to camera
+                ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-player-fill'); // Cor do personagem
+                ctx.fillRect(this.x - cameraX, this.y, this.width, this.height); // Desenha em relação à câmera
 
-                // Draw crown image in Phase 3
+                // Desenha a imagem da coroa na Fase 3
                 if (currentPhase === 'phase3' && crownImage.complete) {
-                    ctx.drawImage(crownImage, this.x - cameraX + this.width / 4, this.y - 25, this.width / 2, this.height / 2); // Ajuste a posição e o tamanho da coroa
+                    ctx.drawImage(crownImage, this.x - cameraX + this.width / 4, this.y - 25, this.width / 2, this.height / 2); // Ajusta a posição e o tamanho da coroa
                 }
             }
 
             update() {
-                // Apply gravity
+                // Aplica gravidade
                 this.dy += GRAVITY;
                 this.y += this.dy;
 
-                // Apply horizontal movement
+                // Aplica movimento horizontal
                 this.x += this.dx;
 
-                // Prevent player from going out of world bounds horizontally
+                // Impede que o jogador saia dos limites do mundo horizontalmente
                 let currentWorldWidth = WORLD_WIDTH_PHASE1;
                 if (currentPhase === 'phase2') currentWorldWidth = WORLD_WIDTH_PHASE2;
                 else if (currentPhase === 'phase3') currentWorldWidth = WORLD_WIDTH_PHASE3;
@@ -599,7 +599,7 @@
             }
         }
 
-        // Class for Platforms
+        // Classe para Plataformas
         class Platform {
             constructor(x, y, width) {
                 this.x = x;
@@ -609,12 +609,12 @@
             }
 
             draw() {
-                ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-platform-stone'); // Stone-like for platforms
-                ctx.fillRect(this.x - cameraX, this.y, this.width, this.height); // Draw relative to camera
+                ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-platform-stone'); // Cor de pedra para plataformas
+                ctx.fillRect(this.x - cameraX, this.y, this.width, this.height); // Desenha em relação à câmera
             }
         }
 
-        // Class for Computers (Collectibles)
+        // Classe para Computadores (Coletáveis)
         class Computer {
             constructor(x, y) {
                 this.x = x;
@@ -626,7 +626,7 @@
 
             draw() {
                 if (!this.collected) {
-                    ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-computer-fill'); // Gold for "computers/coins"
+                    ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-computer-fill'); // Dourado para "computadores/moedas"
                     ctx.beginPath();
                     ctx.arc(this.x - cameraX + this.width / 2, this.y + this.height / 2, this.width / 2, 0, Math.PI * 2);
                     ctx.fill();
@@ -634,7 +634,7 @@
             }
         }
 
-        // Class for Princess
+        // Classe para a Princesa
         class Princess {
             constructor(x, y) {
                 this.x = x;
@@ -644,29 +644,29 @@
             }
 
             draw() {
-                ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-princess-fill'); // Princess pink
+                ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-princess-fill'); // Rosa choque para a princesa
                 ctx.fillRect(this.x - cameraX, this.y, this.width, this.height);
                 ctx.fillStyle = 'white';
                 ctx.font = '12px Arial';
-                ctx.fillText('👑', this.x - cameraX + 5, this.y + 20); // Simple crown emoji
+                ctx.fillText('👑', this.x - cameraX + 5, this.y + 20); // Emoji de coroa simples
             }
         }
 
-        // Class for Antonela
+        // Classe para Antonela
         class Antonela {
             constructor(x, y) {
                 this.x = x;
                 this.y = y;
-                this.width = 25; // Smaller size for a baby
+                this.width = 25; // Tamanho menor para um bebê
                 this.height = 35;
             }
 
             draw() {
-                ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-antonela-fill'); // Antonela light green
+                ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-antonela-fill'); // Verde claro/menta para Antonela
                 ctx.fillRect(this.x - cameraX, this.y, this.width, this.height);
                 ctx.fillStyle = 'black';
                 ctx.font = '12px Arial';
-                ctx.fillText('�', this.x - cameraX + 5, this.y + 15); // Baby emoji
+                ctx.fillText('👶', this.x - cameraX + 5, this.y + 15); // Emoji de bebê
             }
         }
 
@@ -674,7 +674,7 @@
             currentPhase = 'phase1';
             player = new Player(50, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT);
             platforms = [
-                new Platform(0, GAME_HEIGHT - PLATFORM_HEIGHT, 100), // Initial ground segment
+                new Platform(0, GAME_HEIGHT - PLATFORM_HEIGHT, 100), // Segmento de chão inicial
                 new Platform(150, GAME_HEIGHT - 100, 100),
                 new Platform(300, GAME_HEIGHT - 50, 150),
                 new Platform(500, GAME_HEIGHT - 120, 100),
@@ -694,36 +694,36 @@
                 new Computer(1300, GAME_HEIGHT - 180)
             ];
             
-            // Background elements for Phase 1 (Corumbá)
+            // Elementos de fundo para a Fase 1 (Corumbá)
             backgroundElements = [
                 { type: 'mountain', x: 50, y: GAME_HEIGHT - 150, width: 200, height: 100, color: '#4a5568' },
                 { type: 'mountain', x: 300, y: GAME_HEIGHT - 180, width: 250, height: 120, color: '#4a5568' },
                 { type: 'building', x: 600, y: GAME_HEIGHT - 200, width: 80, height: 150, color: '#718096' },
                 { type: 'building', x: 700, y: GAME_HEIGHT - 170, width: 60, height: 120, color: '#718096' },
-                { type: 'river', x: 0, y: GAME_HEIGHT - 40, width: WORLD_WIDTH_PHASE1, height: 40, color: '#0d47a1' } // River covers entire world width
+                { type: 'river', x: 0, y: GAME_HEIGHT - 40, width: WORLD_WIDTH_PHASE1, height: 40, color: '#0d47a1' } // Rio cobrindo toda a largura do mundo
             ];
-            canvasBackgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-game-background-corumba'); // Corumbá background
+            canvasBackgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-game-background-corumba'); // Fundo Corumbá
 
-            score = 0; // Reset score for a fresh game
-            playerLives = 5; // Reset lives for a fresh game
-            phase1ComputersCollected = 0; // Reset
-            phase2ComputersCollected = 0; // Reset
-            phase3ComputersCollected = 0; // Reset
+            score = 0; // Reinicia a pontuação para um novo jogo
+            playerLives = 5; // Reinicia as vidas para um novo jogo
+            phase1ComputersCollected = 0; // Reinicia
+            phase2ComputersCollected = 0; // Reinicia
+            phase3ComputersCollected = 0; // Reinicia
 
             scoreDisplay.textContent = score;
-            livesDisplay.textContent = playerLives; // Update lives display
+            livesDisplay.textContent = playerLives; // Atualiza a exibição de vidas
             gameStatus.textContent = 'Pressione \'Iniciar Jornada\' para defender seu Reino!';
             gameRunning = false;
             cameraX = 0;
-            princess = null; // Ensure princess is not present in Phase 1
-            antonela = null; // Ensure Antonela is not present in Phase 1
+            princess = null; // Garante que a princesa não esteja presente na Fase 1
+            antonela = null; // Garante que Antonela não esteja presente na Fase 1
             drawGame();
         }
 
-        // Initialize Phase 2 (Campo Grande)
+        // Inicializa a Fase 2 (Campo Grande)
         function initPhase2() {
             currentPhase = 'phase2';
-            player = new Player(50, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT); // Reset player position for new phase
+            player = new Player(50, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT); // Reinicia a posição do jogador para a nova fase
             platforms = [
                 new Platform(0, GAME_HEIGHT - PLATFORM_HEIGHT, 150),
                 new Platform(200, GAME_HEIGHT - 100, 100),
@@ -731,93 +731,91 @@
                 new Platform(500, GAME_HEIGHT - 150, 100),
                 new Platform(700, GAME_HEIGHT - 80, 150),
                 new Platform(900, GAME_HEIGHT - 120, 100),
-                new Platform(WORLD_WIDTH_PHASE2 - 200, GAME_HEIGHT - PLATFORM_HEIGHT - 50, 200), // Platform leading to princess
-                new Platform(WORLD_WIDTH_PHASE2 - 150, GAME_HEIGHT - PLATFORM_HEIGHT, 150) // Final ground segment
+                new Platform(WORLD_WIDTH_PHASE2 - 200, GAME_HEIGHT - PLATFORM_HEIGHT - 50, 200), // Plataforma que leva à princesa
+                new Platform(WORLD_WIDTH_PHASE2 - 150, GAME_HEIGHT - PLATFORM_HEIGHT, 150) // Segmento de chão final
             ];
-            computers = [ // Computers for Phase 2 - adjusted for easier last one
+            computers = [ // Computadores para a Fase 2 - ajustados para o último ser mais fácil
                 new Computer(250, GAME_HEIGHT - 130),
                 new Computer(400, GAME_HEIGHT - 80),
                 new Computer(600, GAME_HEIGHT - 180),
                 new Computer(800, GAME_HEIGHT - 150)
             ]; 
-            // Princess is positioned first, then the last computer is created based on her position
-            princess = new Princess(WORLD_WIDTH_PHASE2 - 80, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT - 50); // Princess at the end of Phase 2
-            computers.push(new Computer(princess.x + princess.width / 2 - COMPUTER_SIZE / 2, princess.y - COMPUTER_SIZE - 5)); // Computer on top of princess
+            // A princesa é posicionada primeiro, depois o último computador é criado com base em sua posição
+            princess = new Princess(WORLD_WIDTH_PHASE2 - 80, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT - 50); // Princesa no final da Fase 2
+            computers.push(new Computer(princess.x + princess.width / 2 - COMPUTER_SIZE / 2, princess.y - COMPUTER_SIZE - 5)); // Computador em cima da princesa
             
-            antonela = null; // Ensure Antonela is not present in Phase 2
+            antonela = null; // Garante que Antonela não esteja presente na Fase 2
             
-            // Background elements for Phase 2 (Campo Grande)
+            // Elementos de fundo para a Fase 2 (Campo Grande)
             backgroundElements = [
-                { type: 'building', x: 50, y: GAME_HEIGHT - 180, width: 100, height: 130, color: '#607d8b' }, // Gray-blue building
+                { type: 'building', x: 50, y: GAME_HEIGHT - 180, width: 100, height: 130, color: '#607d8b' }, // Prédio cinza-azulado
                 { type: 'building', x: 200, y: GAME_HEIGHT - 140, width: 80, height: 90, color: '#78909c' },
-                { type: 'park_tree', x: 350, y: GAME_HEIGHT - 120, width: 40, height: 80, color: '#4caf50' }, // Green tree (abstract)
+                { type: 'park_tree', x: 350, y: GAME_HEIGHT - 120, width: 40, height: 80, color: '#4caf50' }, // Árvore verde (abstrato)
                 { type: 'building', x: 500, y: GAME_HEIGHT - 200, width: 120, height: 150, color: '#607d8b' },
                 { type: 'park_tree', x: 700, y: GAME_HEIGHT - 90, width: 30, height: 60, color: '#4caf50' },
                 { type: 'building', x: 850, y: GAME_HEIGHT - 160, width: 90, height: 110, color: '#78909c' },
-                { type: 'obelisco', x: WORLD_WIDTH_PHASE2 - 150, y: GAME_HEIGHT - 180, width: 30, height: 150, color: '#e0e0e0' } // Placeholder for Obelisco-like structure
+                { type: 'obelisco', x: WORLD_WIDTH_PHASE2 - 150, y: GAME_HEIGHT - 180, width: 30, height: 150, color: '#e0e0e0' } // Placeholder para estrutura tipo Obelisco
             ];
-            canvasBackgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-game-background-campogrande'); // Campo Grande background
+            canvasBackgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-game-background-campogrande'); // Fundo Campo Grande
 
             cameraX = 0;
             gameRunning = true;
             gameStatus.textContent = 'Fase 2: A Capital! Salve a Rainha Isabela e colete os tesouros!';
-            // Score remains accumulated from previous phase
-            livesDisplay.textContent = playerLives; // Update lives display
-            phase2ComputersCollected = 0; // Reset for new phase
+            // A pontuação permanece acumulada da fase anterior
+            livesDisplay.textContent = playerLives; // Atualiza a exibição de vidas
+            phase2ComputersCollected = 0; // Reinicia para a nova fase
         }
 
-        // Initialize Phase 3 (Enchanted Forest)
+        // Inicializa a Fase 3 (Floresta Encantada)
         function initPhase3() {
             currentPhase = 'phase3';
-            player = new Player(50, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT); // Reset player position for new phase
+            player = new Player(50, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT); // Reinicia a posição do jogador para a nova fase
             platforms = [
                 new Platform(0, GAME_HEIGHT - PLATFORM_HEIGHT, 150),
                 new Platform(200, GAME_HEIGHT - 100, 100),
                 new Platform(350, GAME_HEIGHT - 160, 120),
                 new Platform(500, GAME_HEIGHT - 80, 150),
                 new Platform(650, GAME_HEIGHT - 140, 100),
-                new Platform(800, GAME_HEIGHT - PLATFORM_HEIGHT, 100) // Final platform
+                new Platform(800, GAME_HEIGHT - PLATFORM_HEIGHT, 100) // Plataforma final
             ];
-            computers = [ // Computers for Phase 3 - made easier
-                new Computer(120, GAME_HEIGHT - 50), // On initial ground, very easy
-                new Computer(250, GAME_HEIGHT - 130), // On first platform, accessible
-                new Computer(400, GAME_HEIGHT - 190), // On second platform
-                new Computer(550, GAME_HEIGHT - 110), // On third platform, accessible
-                new Computer(700, GAME_HEIGHT - 170), // On fourth platform
-                new Computer(WORLD_WIDTH_PHASE3 - 100, GAME_HEIGHT - PLAYER_HEIGHT - COMPUTER_SIZE - 5) // Very near Antonela
+            computers = [ // Computadores para a Fase 3 - mais fáceis
+                new Computer(120, GAME_HEIGHT - 50), // No chão inicial, muito fácil
+                new Computer(250, GAME_HEIGHT - 130), // Na primeira plataforma, acessível
+                new Computer(400, GAME_HEIGHT - 190), // Na segunda plataforma
+                new Computer(550, GAME_HEIGHT - 110), // Na terceira plataforma, acessível
+                new Computer(700, GAME_HEIGHT - 170), // Na quarta plataforma
+                new Computer(WORLD_WIDTH_PHASE3 - 100, GAME_HEIGHT - PLAYER_HEIGHT - COMPUTER_SIZE - 5) // Muito perto de Antonela
             ]; 
-            princess = new Princess(WORLD_WIDTH_PHASE3 - 150, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT - 50); // Princess stays nearby
-            antonela = new Antonela(WORLD_WIDTH_PHASE3 - 80, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT - 50); // Antonela at the end
+            princess = new Princess(WORLD_WIDTH_PHASE3 - 150, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT - 50); // Princesa permanece por perto
+            antonela = new Antonela(WORLD_WIDTH_PHASE3 - 80, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT - 50); // Antonela no final
             
-            // Background elements for Phase 3 (Enchanted Forest)
+            // Elementos de fundo para a Fase 3 (Floresta Encantada)
             backgroundElements = [
-                { type: 'tree', x: 50, y: GAME_HEIGHT - 180, width: 60, height: 120, color: '#228B22' }, // Forest Green tree
-                { type: 'mushroom', x: 180, y: GAME_HEIGHT - 50, width: 20, height: 30, color: '#FF4500' }, // OrangeRed mushroom
-                { type: 'tree', x: 280, y: GAME_HEIGHT - 150, width: 70, height: 110, color: '#32CD32' }, // Lime Green tree
-                { type: 'mushroom', x: 400, y: GAME_HEIGHT - 100, width: 25, height: 35, color: '#FF6347' }, // Tomato mushroom
-                { type: 'tree', x: 500, y: GAME_HEIGHT - 200, width: 80, height: 150, color: '#006400' }, // Dark Green tree
-                { type: 'mushroom', x: 700, y: GAME_HEIGHT - 50, width: 20, height: 30, color: '#DAA520' }, // Goldenrod mushroom
-                { type: 'tree', x: 850, y: GAME_HEIGHT - 170, width: 65, height: 130, color: '#2E8B57' } // Sea Green tree
+                { type: 'tree', x: 50, y: GAME_HEIGHT - 180, width: 60, height: 120, color: '#228B22' }, // Árvore verde floresta
+                { type: 'mushroom', x: 180, y: GAME_HEIGHT - 50, width: 20, height: 30, color: '#FF4500' }, // Cogumelo laranja avermelhado
+                { type: 'tree', x: 280, y: GAME_HEIGHT - 150, width: 70, height: 110, color: '#32CD32' }, // Árvore verde limão
+                { type: 'mushroom', x: 400, y: GAME_HEIGHT - 100, width: 25, height: 35, color: '#FF6347' }, // Cogumelo tomate
+                { type: 'tree', x: 500, y: GAME_HEIGHT - 200, width: 80, height: 150, color: '#006400' }, // Árvore verde escuro
+                { type: 'mushroom', x: 700, y: GAME_HEIGHT - 50, width: 20, height: 30, color: '#DAA520' }, // Cogumelo amarelo dourado
+                { type: 'tree', x: 850, y: GAME_HEIGHT - 170, width: 65, height: 130, color: '#2E8B57' } // Árvore verde mar
             ];
-            canvasBackgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-game-background-bosque'); // Sky Blue for enchanted forest sky
+            canvasBackgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-game-background-bosque'); // Céu azul para floresta encantada
 
             cameraX = 0;
             gameRunning = true;
             gameStatus.textContent = 'Fase 3: O Bosque Encantado! Hiago e sua Rainha, salvem a Princesa Antonela!';
-            livesDisplay.textContent = playerLives; // Update lives display
-            phase3ComputersCollected = 0; // Reset for new phase
+            livesDisplay.textContent = playerLives; // Atualiza a exibição de vidas
+            phase3ComputersCollected = 0; // Reinicia para a nova fase
         }
 
-        // Function to restart the current phase
+        // Função para reiniciar o estado da fase atual
         function restartCurrentPhaseState() {
-            // Re-initialize the current phase to reset player position and phase elements
-            // IMPORTANT: Lives and score are NOT reset here, only on initGame()
+            // Reinicializa a fase atual para redefinir a posição do jogador e os elementos da fase
+            // IMPORTANTE: Vidas e pontuação NÃO são redefinidas aqui, apenas em initGame()
             if (currentPhase === 'phase1') {
-                // Re-setup phase 1 elements (platforms, computers, player pos)
-                // This is effectively a soft reset of initGame() without resetting score/lives
                 player = new Player(50, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT);
                 platforms = [
-                    new Platform(0, GAME_HEIGHT - PLATFORM_HEIGHT, 100), // Initial ground segment
+                    new Platform(0, GAME_HEIGHT - PLATFORM_HEIGHT, 100),
                     new Platform(150, GAME_HEIGHT - 100, 100),
                     new Platform(300, GAME_HEIGHT - 50, 150),
                     new Platform(500, GAME_HEIGHT - 120, 100),
@@ -835,10 +833,10 @@
                     new Computer(1100, GAME_HEIGHT - 80),
                     new Computer(1300, GAME_HEIGHT - 180)
                 ];
-                computers.forEach(c => c.collected = false); // Ensure computers are uncollected
-                phase1ComputersCollected = 0; // Reset counter
-                canvasBackgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-game-background-corumba'); // Corumbá background
-                princess = null; antonela = null; // Not in this phase
+                computers.forEach(c => c.collected = false); // Garante que os computadores não foram coletados
+                phase1ComputersCollected = 0; // Reinicia o contador
+                canvasBackgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-game-background-corumba'); // Fundo Corumbá
+                princess = null; antonela = null; // Não nesta fase
             } else if (currentPhase === 'phase2') {
                 player = new Player(50, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT);
                 platforms = [
@@ -858,12 +856,12 @@
                     new Computer(800, GAME_HEIGHT - 150)
                 ];
                 princess = new Princess(WORLD_WIDTH_PHASE2 - 80, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT - 50);
-                computers.push(new Computer(princess.x + princess.width / 2 - COMPUTER_SIZE / 2, princess.y - COMPUTER_SIZE - 5)); // Computer on top of princess
+                computers.push(new Computer(princess.x + princess.width / 2 - COMPUTER_SIZE / 2, princess.y - COMPUTER_SIZE - 5));
                 
-                computers.forEach(c => c.collected = false); // Ensure computers are uncollected
-                phase2ComputersCollected = 0; // Reset counter
-                canvasBackgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-game-background-campogrande'); // Campo Grande background
-                antonela = null; // Not in this phase
+                computers.forEach(c => c.collected = false); // Garante que os computadores não foram coletados
+                phase2ComputersCollected = 0; // Reinicia o contador
+                canvasBackgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-game-background-campogrande'); // Fundo Campo Grande
+                antonela = null; // Não nesta fase
             } else if (currentPhase === 'phase3') {
                 player = new Player(50, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT);
                 platforms = [
@@ -872,34 +870,34 @@
                     new Platform(350, GAME_HEIGHT - 160, 120),
                     new Platform(500, GAME_HEIGHT - 80, 150),
                     new Platform(650, GAME_HEIGHT - 140, 100),
-                    new Platform(800, GAME_HEIGHT - PLATFORM_HEIGHT, 100) // Final platform
+                    new Platform(800, GAME_HEIGHT - PLATFORM_HEIGHT, 100) // Plataforma final
                 ];
-                computers = [ // Computers for Phase 3
-                    new Computer(120, GAME_HEIGHT - 50), // On initial ground, very easy
-                    new Computer(250, GAME_HEIGHT - 130), // On first platform, accessible
+                computers = [ // Computadores para a Fase 3
+                    new Computer(120, GAME_HEIGHT - 50),
+                    new Computer(250, GAME_HEIGHT - 130), 
                     new Computer(400, GAME_HEIGHT - 190), 
                     new Computer(550, GAME_HEIGHT - 110), 
                     new Computer(700, GAME_HEIGHT - 170), 
-                    new Computer(WORLD_WIDTH_PHASE3 - 100, GAME_HEIGHT - PLAYER_HEIGHT - COMPUTER_SIZE - 5) // Near Antonela
+                    new Computer(WORLD_WIDTH_PHASE3 - 100, GAME_HEIGHT - PLAYER_HEIGHT - COMPUTER_SIZE - 5) // Perto de Antonela
                 ]; 
-                computers.forEach(c => c.collected = false); // Ensure computers are uncollected
-                phase3ComputersCollected = 0; // Reset counter
-                canvasBackgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-game-background-bosque'); // Sky Blue for enchanted forest sky
-                princess = new Princess(WORLD_WIDTH_PHASE3 - 150, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT - 50); // Princess stays nearby
-                antonela = new Antonela(WORLD_WIDTH_PHASE3 - 80, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT - 50); // Antonela at the end
+                computers.forEach(c => c.collected = false); // Garante que os computadores não foram coletados
+                phase3ComputersCollected = 0; // Reinicia o contador
+                canvasBackgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-game-background-bosque'); // Céu azul para floresta encantada
+                princess = new Princess(WORLD_WIDTH_PHASE3 - 150, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT - 50); // Princesa permanece por perto
+                antonela = new Antonela(WORLD_WIDTH_PHASE3 - 80, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT - 50); // Antonela no final
             }
-            cameraX = 0; // Reset camera
+            cameraX = 0; // Reinicia a câmera
         }
 
 
         function drawGame() {
             ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
 
-            // Draw dynamic background color
+            // Desenha a cor de fundo dinâmica
             ctx.fillStyle = canvasBackgroundColor;
             ctx.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
 
-            // Draw background elements (parallax effect - slower movement)
+            // Desenha os elementos de fundo (efeito paralaxe - movimento mais lento)
             backgroundElements.forEach(el => {
                 ctx.fillStyle = el.color;
                 if (el.type === 'mountain' || el.type === 'building') {
@@ -907,12 +905,12 @@
                 } else if (el.type === 'river') {
                     ctx.fillRect(el.x - cameraX * 0.8, el.y, el.width, el.height);
                 } else if (el.type === 'park_tree' || el.type === 'tree') {
-                    // Simple tree: trunk and circle for leaves
-                    ctx.fillStyle = '#8b4513'; // Brown for trunk
-                    ctx.fillRect(el.x - cameraX * 0.5 + el.width/2 - 5, el.y + el.height * 0.7, 10, el.height * 0.3); // Trunk
-                    ctx.fillStyle = el.color; // Green for leaves
+                    // Árvore simples: tronco e círculo para folhas
+                    ctx.fillStyle = '#8b4513'; // Marrom para o tronco
+                    ctx.fillRect(el.x - cameraX * 0.5 + el.width/2 - 5, el.y + el.height * 0.7, 10, el.height * 0.3); // Tronco
+                    ctx.fillStyle = el.color; // Verde para as folhas
                     ctx.beginPath();
-                    ctx.arc(el.x - cameraX * 0.5 + el.width/2, el.y + el.height * 0.7, el.width/2, 0, Math.PI * 2); // Leaves
+                    ctx.arc(el.x - cameraX * 0.5 + el.width/2, el.y + el.height * 0.7, el.width/2, 0, Math.PI * 2); // Folhas
                     ctx.fill();
                 } else if (el.type === 'obelisco' || el.type === 'monument') {
                     ctx.fillStyle = el.color;
@@ -923,90 +921,90 @@
                     ctx.closePath();
                     ctx.fill();
                 } else if (el.type === 'mushroom') {
-                    // Simple mushroom: stem and cap
-                    ctx.fillStyle = '#f5deb3'; // Wheat for stem
-                    ctx.fillRect(el.x - cameraX * 0.5 + el.width/2 - 5, el.y + el.height * 0.6, 10, el.height * 0.4); // Stem
-                    ctx.fillStyle = el.color; // Mushroom cap color
+                    // Cogumelo simples: talo e chapéu
+                    ctx.fillStyle = '#f5deb3'; // Trigo para o talo
+                    ctx.fillRect(el.x - cameraX * 0.5 + el.width/2 - 5, el.y + el.height * 0.6, 10, el.height * 0.4); // Talo
+                    ctx.fillStyle = el.color; // Cor do chapéu do cogumelo
                     ctx.beginPath();
-                    ctx.arc(el.x - cameraX * 0.5 + el.width/2, el.y + el.height * 0.6, el.width/2, 0, Math.PI, true); // Cap
+                    ctx.arc(el.x - cameraX * 0.5 + el.width/2, el.y + el.height * 0.6, el.width/2, 0, Math.PI, true); // Chapéu
                     ctx.closePath();
                     ctx.fill();
                 }
             });
 
-            // Draw platforms relative to camera
+            // Desenha plataformas em relação à câmera
             platforms.forEach(platform => platform.draw());
 
-            // Draw computers relative to camera
+            // Desenha computadores em relação à câmera
             computers.forEach(computer => computer.draw());
 
-            // Draw princess if in Phase 2 or 3
+            // Desenha a princesa se estiver na Fase 2 ou 3
             if (princess) {
                 princess.draw();
             }
-            // Draw Antonela if in Phase 3
+            // Desenha Antonela se estiver na Fase 3
             if (antonela) {
                 antonela.draw();
             }
 
-            // Draw player
+            // Desenha o jogador
             player.draw();
         }
 
         function updateGame() {
             if (!gameRunning) return;
 
-            // Horizontal movement (keyboard)
+            // Movimento horizontal (teclado)
             player.dx = 0;
             if (keys['ArrowLeft']) player.dx = -PLAYER_SPEED;
             if (keys['ArrowRight']) player.dx = PLAYER_SPEED;
 
             player.update();
 
-            // Player collision with platforms
-            player.isJumping = true; // Assume in air until collision
+            // Colisão do jogador com plataformas
+            player.isJumping = true; // Assume que está no ar até colidir com uma plataforma
             platforms.forEach(platform => {
-                // Simple AABB collision detection
+                // Detecção de colisão AABB simples
                 if (player.x < platform.x + platform.width &&
                     player.x + player.width > platform.x &&
                     player.y + player.height > platform.y &&
                     player.y < platform.y + platform.height) {
 
-                    // If falling and lands on top of platform
+                    // Se estiver caindo e pousar em cima da plataforma
                     if (player.dy > 0 && player.y + player.height - player.dy <= platform.y) {
                         player.y = platform.y - player.height;
                         player.dy = 0;
                         player.isJumping = false;
                     }
-                    // If hitting from bottom (e.g., jump into a platform)
+                    // Se estiver batendo por baixo (por exemplo, pulando em uma plataforma)
                     else if (player.dy < 0 && player.y < platform.y + platform.height) {
                         player.y = platform.y + platform.height;
-                        player.dy = 0; // Stop upward movement
+                        player.dy = 0; // Para o movimento para cima
                     }
                 }
             });
 
-            // If player falls below canvas (death condition)
+            // Se o jogador cair abaixo do canvas (condição de morte)
             if (player.y + player.height > GAME_HEIGHT + 50) {
                 gameRunning = false;
-                playerLives--; // Decrease a life
-                livesDisplay.textContent = playerLives; // Update lives display
+                playerLives--; // Diminui uma vida
+                livesDisplay.textContent = playerLives; // Atualiza a exibição de vidas
 
                 if (playerLives <= 0) {
                     gameStatus.textContent = 'Game Over! Sem vidas restantes. Pontuação Final: ' + score;
-                    setTimeout(() => initGame(), 2000); // Fully reset the game after a short delay
+                    setTimeout(() => initGame(), 2000); // Reinicia completamente o jogo após um pequeno atraso
                 } else {
                     gameStatus.textContent = `Você caiu! Vidas restantes: ${playerLives}. Reiniciando fase...`;
-                    setTimeout(() => restartCurrentPhaseState(), 1500); // Restart current phase after a short delay
+                    setTimeout(() => restartCurrentPhaseState(), 1500); // Reinicia a fase atual após um pequeno atraso
                 }
-                return; // Exit updateGame to prevent further processing
+                return; // Sai do updateGame para evitar processamento adicional
             }
 
-            // Game logic per phase
+            // Lógica do jogo por fase
             let currentWorldWidth;
             if (currentPhase === 'phase1') {
                 currentWorldWidth = WORLD_WIDTH_PHASE1;
-                // Collect computers for Phase 1
+                // Coleta de computadores para a Fase 1
                 computers.forEach(computer => {
                     if (!computer.collected &&
                         player.x < computer.x + computer.width &&
@@ -1014,17 +1012,17 @@
                         player.y < computer.y + computer.height &&
                         player.y + player.height > computer.y) {
                         computer.collected = true;
-                        phase1ComputersCollected++; // Track collected computers in current phase
+                        phase1ComputersCollected++; // Acompanha os computadores coletados na fase atual
                     }
                 });
 
-                // Phase 1 Win condition: All computers collected
-                if (phase1ComputersCollected === computers.length) { // Check against total expected computers
+                // Condição de vitória da Fase 1: Todos os computadores coletados
+                if (phase1ComputersCollected === computers.length) { // Verifica em relação ao total de computadores esperados
                     gameRunning = false;
-                    playerLives++; // Add a life for completing a phase
-                    livesDisplay.textContent = playerLives; // Update lives display
-                    score += computers.length * 10; // Add score for completing phase 1 (dynamic based on computers)
-                    scoreDisplay.textContent = score; // Update score display
+                    playerLives++; // Adiciona uma vida por completar uma fase
+                    livesDisplay.textContent = playerLives; // Atualiza a exibição de vidas
+                    score += computers.length * 10; // Adiciona pontuação por completar a fase 1 (dinâmica com base nos computadores)
+                    scoreDisplay.textContent = score; // Atualiza a exibição da pontuação
                     gameStatus.textContent = 'Tesouros coletados! Vida extra garantida! Prepare-se para a Fase 2: O Desafio da Capital!';
                     setTimeout(() => {
                         initPhase2();
@@ -1035,7 +1033,7 @@
                 }
             } else if (currentPhase === 'phase2') {
                 currentWorldWidth = WORLD_WIDTH_PHASE2;
-                // Collect computers for Phase 2
+                // Coleta de computadores para a Fase 2
                 computers.forEach(computer => {
                     if (!computer.collected &&
                         player.x < computer.x + computer.width &&
@@ -1043,21 +1041,21 @@
                         player.y < computer.y + computer.height &&
                         player.y + player.height > computer.y) {
                         computer.collected = true;
-                        phase2ComputersCollected++; // Track collected computers in current phase
+                        phase2ComputersCollected++; // Acompanha os computadores coletados na fase atual
                     }
                 });
 
-                // Phase 2 Win condition: All computers collected AND reach the princess
-                if (phase2ComputersCollected === computers.length && princess && // Check against total expected computers
+                // Condição de vitória da Fase 2: Todos os computadores coletados E alcançar a princesa
+                if (phase2ComputersCollected === computers.length && princess && // Verifica em relação ao total de computadores esperados
                     player.x < princess.x + princess.width &&
                     player.x + player.width > princess.x &&
                     player.y < princess.y + princess.height &&
                     player.y + player.height > princess.y) {
                     gameRunning = false;
-                    playerLives++; // Add a life for completing a phase
-                    livesDisplay.textContent = playerLives; // Update lives display
-                    score += computers.length * 10; // Add score for completing phase 2 (dynamic based on computers)
-                    scoreDisplay.textContent = score; // Update score display
+                    playerLives++; // Adiciona uma vida por completar uma fase
+                    livesDisplay.textContent = playerLives; // Atualiza a exibição de vidas
+                    score += computers.length * 10; // Adiciona pontuação por completar a fase 2 (dinâmica com base nos computadores)
+                    scoreDisplay.textContent = score; // Atualiza a exibição da pontuação
                     gameStatus.textContent = 'Rainha Isabela resgatada e mais tesouros coletados! Vida extra concedida! Rumo à Fase 3: O Bosque Encantado!';
                     setTimeout(() => {
                         initPhase3();
@@ -1068,7 +1066,7 @@
                 }
             } else if (currentPhase === 'phase3') {
                 currentWorldWidth = WORLD_WIDTH_PHASE3;
-                // Collect computers for Phase 3
+                // Coleta de computadores para a Fase 3
                 computers.forEach(computer => {
                     if (!computer.collected &&
                         player.x < computer.x + computer.width &&
@@ -1076,27 +1074,27 @@
                         player.y < computer.y + computer.height &&
                         player.y + player.height > computer.y) {
                         computer.collected = true;
-                        phase3ComputersCollected++; // Track collected computers in current phase
+                        phase3ComputersCollected++; // Acompanha os computadores coletados na fase atual
                     }
                 });
 
-                // Phase 3 Win condition: All computers collected AND reach Antonela
+                // Condição de vitória da Fase 3: Todos os computadores coletados E alcançar Antonela
                 if (phase3ComputersCollected === computers.length && antonela &&
                     player.x < antonela.x + antonela.width &&
                     player.x + player.width > antonela.x &&
                     player.y < antonela.y + antonela.height &&
                     player.y + player.height > antonela.y) {
                     gameRunning = false;
-                    score += computers.length * 10; // Add score for completing phase 3 (dynamic based on computers)
-                    scoreDisplay.textContent = score; // Update score display
+                    score += computers.length * 10; // Adiciona pontuação por completar a fase 3 (dinâmica com base nos computadores)
+                    scoreDisplay.textContent = score; // Atualiza a exibição da pontuação
                     gameStatus.textContent = 'Vitória Completa! E o Herói Hiago e sua Rainha Isabela viveram felizes para sempre em seu Reino Encantado! Pontuação Final: ' + score;
-                    // At this point, the game is fully won, no more phases.
-                    // You might want to add a "Play Again?" button here.
+                    // Neste ponto, o jogo está completamente vencido, sem mais fases.
+                    // Você pode querer adicionar um botão "Jogar Novamente?" aqui.
                 }
             }
 
 
-            // Update camera position to follow the player, clamped to world bounds
+            // Atualiza a posição da câmera para seguir o jogador, limitada aos limites do mundo
             cameraX = player.x - (GAME_WIDTH / 2) + (PLAYER_WIDTH / 2);
             if (cameraX < 0) cameraX = 0;
             if (cameraX + GAME_WIDTH > currentWorldWidth) cameraX = currentWorldWidth - GAME_WIDTH;
@@ -1110,7 +1108,7 @@
             }
         }
 
-        // Event Listeners for player control (Keyboard)
+        // Listeners de Eventos para controle do jogador (Teclado)
         document.addEventListener('keydown', (e) => {
             keys[e.key] = true;
             if (e.key === ' ' && gameRunning) {
@@ -1122,15 +1120,15 @@
             keys[e.key] = false;
         });
         
-        // Event Listeners for player control (Touch Buttons)
+        // Listeners de Eventos para controle do jogador (Botões de Toque)
         const moveLeftButton = document.getElementById('moveLeftButton');
         const jumpButton = document.getElementById('jumpButton');
         const moveRightButton = document.getElementById('moveRightButton');
 
-        // Move Left Button
+        // Botão Mover Esquerda
         if (moveLeftButton) {
             moveLeftButton.addEventListener('touchstart', (e) => {
-                e.preventDefault(); // Prevent default touch behavior (e.g., scrolling)
+                e.preventDefault(); // Previne o comportamento padrão do toque (ex: rolagem)
                 if (gameRunning) keys['ArrowLeft'] = true;
             });
             moveLeftButton.addEventListener('touchend', (e) => {
@@ -1139,7 +1137,7 @@
             });
         }
 
-        // Jump Button
+        // Botão Pular
         if (jumpButton) {
             jumpButton.addEventListener('touchstart', (e) => {
                 e.preventDefault();
@@ -1147,11 +1145,11 @@
             });
             jumpButton.addEventListener('touchend', (e) => {
                 e.preventDefault();
-                // No specific action on touchend for jump, but good practice to have it.
+                // Nenhuma ação específica no touchend para pular, mas é uma boa prática tê-lo.
             });
         }
 
-        // Move Right Button
+        // Botão Mover Direita
         if (moveRightButton) {
             moveRightButton.addEventListener('touchstart', (e) => {
                 e.preventDefault();
@@ -1166,9 +1164,9 @@
 
         startButton.addEventListener('click', () => {
             if (!gameRunning) {
-                // If starting after a "Game Over" or "Victory"
+                // Se estiver começando após um "Game Over" ou "Vitória"
                 if (gameStatus.textContent.includes('Game Over') || gameStatus.textContent.includes('Parabéns') || gameStatus.textContent.includes('Vitória Completa')) {
-                     initGame(); // Reinitialize for Phase 1
+                     initGame(); // Reinicializa para a Fase 1
                 }
                 gameRunning = true;
                 gameStatus.textContent = 'Jogo em andamento! Use as setas para mover, espaço para pular (ou toque nos botões abaixo).';
@@ -1177,20 +1175,19 @@
         });
 
         resetButton.addEventListener('click', () => {
-            initGame(); // Always reset to Phase 1, starting a new game
+            initGame(); // Sempre reinicia para a Fase 1, começando um novo jogo
         });
 
-        // Initialize all carousels and the game when the page is loaded
+        // Inicializa todos os carrosséis e o jogo quando a página é carregada
         window.onload = function() {
             updateCountdown();
             initCarousel('carousel-inicio');
             initCarousel('carousel-pedido');
             initCarousel('carousel-casamento');
             initCarousel('carousel-antonela');
-            initGame(); // Initialize the game on page load
+            initGame(); // Inicializa o jogo ao carregar a página
         };
 
     </script>
 </body>
 </html>
-�

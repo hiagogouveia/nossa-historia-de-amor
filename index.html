@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nosso Reino de Amor - Hiago & Isabela</title>
+    <!-- Favicon -->
+    <link rel="icon" href="logo_hi_isabela.ico" type="image/x-icon">
+
     <!-- Carrega o Tailwind CSS para estilos -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -282,7 +285,7 @@
             <article class="bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-700">
                 <h3 class="text-2xl font-semibold text-red-400 mb-3">O Alvorecer do Reino: O Encontro na Cidadela Digix</h3>
                 <p class="mb-4">Nossa história começou a se entrelaçar na Cidadela <strong class="text-red-400">Digix</strong>, em 2015. O ambiente de trabalho se tornou o palco para os primeiros olhares e as primeiras conversas, que aos poucos transformariam colegas em algo muito mais profundo. Era o prelúdio de uma conexão que só cresceria.</p>
-                <p>Foi em <strong class="text-red-400">2016</strong> que demos o primeiro grande passo e oficializamos nosso romance, marcando o início da nossa jornada como casal real.</p>
+                <p>Foi em <strong class="text-red-400">2016</strong> que damos o primeiro grande passo e oficializamos nosso romance, marcando o início da nossa jornada como casal real.</p>
                 <!-- Carrossel para o início da história -->
                 <div id="carousel-inicio" class="carousel-container">
                     <div class="carousel-slides">
@@ -299,7 +302,7 @@
 
             <article class="bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-700">
                 <h3 class="text-2xl font-semibold text-red-400 mb-3">O Grande Juramento: Um "Sim" Para a Eternidade</h3>
-                <p class="mb-4">O tempo voou, e o amor só se aprofundou. No dia <strong class="text-red-400">15 de dezembro de 2017</strong>, em um momento que ficará para sempre gravado em nossa memória, fiz a pergunta mais importante da minha vida. Aquele "sim" selou a promessa de um futuro juntos, de construir um reino e compartilhar cada novo capítulo.</p>
+                <p class="mb-4">O tempo voou, e o amor só se aprofundou. No dia <strong class="text-red-400">15 de dezembro de 2017</strong>, em um momento que ficará para sempre gravado em nossa memória, faço a pergunta mais importante da minha vida. Aquele "sim" selou a promessa de um futuro juntos, de construir um reino e compartilhar cada novo capítulo.</p>
                 <!-- Novas Imagens para o pedido de casamento -->
                 <div id="carousel-pedido" class="carousel-container">
                     <div class="carousel-slides">
@@ -784,7 +787,7 @@
                 new Computer(400, GAME_HEIGHT - 190), // Na segunda plataforma
                 new Computer(550, GAME_HEIGHT - 110), // Na terceira plataforma, acessível
                 new Computer(700, GAME_HEIGHT - 170), // Na quarta plataforma
-                new Computer(WORLD_WIDTH_PHASE3 - 100, GAME_HEIGHT - PLAYER_HEIGHT - COMPUTER_SIZE - 5) // Muito perto de Antonela
+                new Computer(WORLD_WIDTH_PHASE3 - 100, GAME_HEIGHT - PLAYER_HEIGHT - COMPUTER_SIZE - 5) // Perto de Antonela
             ]; 
             princess = new Princess(WORLD_WIDTH_PHASE3 - 150, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT - 50); // Princesa permanece por perto
             antonela = new Antonela(WORLD_WIDTH_PHASE3 - 80, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT - 50); // Antonela no final
@@ -815,7 +818,7 @@
             if (currentPhase === 'phase1') {
                 player = new Player(50, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT);
                 platforms = [
-                    new Platform(0, GAME_HEIGHT - PLATFORM_HEIGHT, 100),
+                    new Platform(0, GAME_HEIGHT - PLATFORM_HEIGHT, 100), // Segmento de chão inicial
                     new Platform(150, GAME_HEIGHT - 100, 100),
                     new Platform(300, GAME_HEIGHT - 50, 150),
                     new Platform(500, GAME_HEIGHT - 120, 100),
@@ -856,7 +859,7 @@
                     new Computer(800, GAME_HEIGHT - 150)
                 ];
                 princess = new Princess(WORLD_WIDTH_PHASE2 - 80, GAME_HEIGHT - PLAYER_HEIGHT - PLATFORM_HEIGHT - 50);
-                computers.push(new Computer(princess.x + princess.width / 2 - COMPUTER_SIZE / 2, princess.y - COMPUTER_SIZE - 5));
+                computers.push(new Computer(princess.x + princess.width / 2 - COMPUTER_SIZE / 2, princess.y - COMPUTER_SIZE - 5)); // Computador em cima da princesa
                 
                 computers.forEach(c => c.collected = false); // Garante que os computadores não foram coletados
                 phase2ComputersCollected = 0; // Reinicia o contador
@@ -923,7 +926,7 @@
                 } else if (el.type === 'mushroom') {
                     // Cogumelo simples: talo e chapéu
                     ctx.fillStyle = '#f5deb3'; // Trigo para o talo
-                    ctx.fillRect(el.x - cameraX * 0.5 + el.width/2 - 5, el.y + el.height * 0.6, 10, el.height * 0.4); // Talo
+                    ctx.fillRect(el.x - cameraX * 0.5 + el.width/2 - 5, el.y + el.height * 0.6, 10, el.height * 0.4); // Stem
                     ctx.fillStyle = el.color; // Cor do chapéu do cogumelo
                     ctx.beginPath();
                     ctx.arc(el.x - cameraX * 0.5 + el.width/2, el.y + el.height * 0.6, el.width/2, 0, Math.PI, true); // Chapéu
